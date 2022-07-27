@@ -8,6 +8,6 @@
 	email = rpopic2@gmail.com
 	name = rpopic2
 [core]
-	editor = vim
+	editor = nvim
 [init]
 	defaultBranch = main
