@@ -119,3 +119,5 @@ fi
 if [ -f ~/.mybashrc ]; then
     . ~/.mybashrc
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
