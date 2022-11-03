@@ -1,0 +1,4 @@
+set -o vi
+
+export PATH=$PATH:~/.local/bin/bat
+
