@@ -8,7 +8,7 @@
 	email = rpopic2@gmail.com
 	name = rpopic2
 [core]
-	editor = nvim
+	editor = vi
  	pager = delta
 [init]
 	defaultBranch = main
