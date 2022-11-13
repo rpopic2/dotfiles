@@ -1,0 +1,17 @@
+telinit 5 : start gui 
+runlevel : check current runlevel
+systemctl set-default <target> : change default target(runlevel)
+systemctl get-default : get default target file
+
+
+
+* runlevel :
+runlevel[n].target
+0 : poweroff.target : shot down and power off
+1 : rescue.target : rescue shell
+2~4 : multi-user.target : start non-graphical multi-user shell
+5 : graphical.target : set up a graphical multi-user shell
+6 : reboot.target : reboot
+
+# scan ip
+sudo nmap -sP 192.168.0.0/24
