@@ -21,3 +21,5 @@ set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is wor
 set softtabstop=4 "How many columns of whitespace is a tab keypress of a backspace keypress worth
 set expandtab "You never want to se a \t agains inyour file, rather tabs keypresses will be expanded into spaces
 
+"key bindings
+inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>" 
