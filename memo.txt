@@ -15,3 +15,6 @@ runlevel[n].target
 
 # scan ip
 sudo nmap -sP 192.168.0.0/24
+
+# coc omnisharp setup
+dotnet tool install --global csharp-ls

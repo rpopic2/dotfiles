@@ -10,7 +10,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "nvim settings
-set background=dark
+set background=light
 
 set mouse=a
 
