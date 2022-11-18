@@ -2,4 +2,5 @@ set -o vi
 
 export PATH=$PATH:~/.local/bin/bat:~/scripts
 export LESS='--mouse --wheel-lines=2'
+export BAT_THEME="base16"
 
