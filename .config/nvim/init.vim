@@ -11,6 +11,7 @@ call plug#end()
 
 "nvim settings
 set background=light
+colorscheme rose-pine-light
 
 set mouse=a
 
