@@ -4,13 +4,13 @@ if test -z $CWD; then
     CWD=$(pwd)
 fi
 
-RESULT=$(git remote get-url origin | cut -d/ -f5)
+RESULT=$(git -C $CWD remote get-url origin | cut -d/ -f5)
 RESULT=$RESULT/$(git -C $CWD branch --show-current)
 
-if git -C $CWD status | grep -c push; then
+if git -C $CWD status | grep -c 'git push'; then
     RESULT="$RESULT↑"
 fi
-if git -C $CWD tatus | grep -c pull; then
+if git -C $CWD status | grep -c 'git pull'; then
     RESULT="$RESULT↓"
 fi
 if git -C $CWD status | grep -c 'tree clean'; then
