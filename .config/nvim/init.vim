@@ -23,3 +23,5 @@ set expandtab "You never want to se a \t agains inyour file, rather tabs keypres
 
 "key bindings
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>" 
+
+map <space><space> :
