@@ -34,5 +34,9 @@
     l = log
     s = status
     sw = switch
+    m = merge
     p = push
     pl = pull
+    r = reset
+    rs = reset --soft
+    rh = reset --hard HEAD
