@@ -27,7 +27,12 @@
 [diff]
 	colorMoved = default
 [alias]
-    s = status
-    f = fetch
+    a = add
     c = commit
+    d = diff
+    f = fetch
+    l = log
+    s = status
     sw = switch
+    p = push
+    pl = pull
