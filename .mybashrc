@@ -3,5 +3,3 @@ set -o vi
 export PATH=$PATH:~/.local/bin/bat:~/scripts
 export LESS='--mouse --wheel-lines=2'
 
-git fetch
-git status
