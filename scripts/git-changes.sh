@@ -1,5 +1,13 @@
 #!/bin/bash
-STAT=$(git status | tail -n 1 | awk '{ print $1 }')
-if [ "$STAT" != "nothing" ]; then
-    echo "*"
+STATUS=$(git status)
+RESULT=""
+if [ -z $($STAT | grep 'tree clean')]; then
+    RESULT="*"
 fi
+if git status | grep -c push; then
+    RESULT="$RESULT↑"
+fi
+if git status | grep -c pull; then
+    RESULT="$RESULT↓"
+fi
+echo $RESULT
