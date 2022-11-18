@@ -37,6 +37,7 @@
     sw = switch
     m = merge
     p = push
+    pu = push
     pl = pull
     r = reset
     rs = reset --soft
