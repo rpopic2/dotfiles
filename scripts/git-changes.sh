@@ -4,7 +4,7 @@ if test -z $CWD; then
     CWD=$(pwd)
 fi
 
-RESULT=$(git -C $CWD remote get-url origin | cut -d/ -f5)
+RESULT=$(git -C $CWD remote get-url origin | cut -d/ -f5 | cut -d. -f1)
 RESULT=$RESULT/$(git -C $CWD branch --show-current)
 
 if git -C $CWD status | grep -c 'git push'; then
