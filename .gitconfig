@@ -29,6 +29,7 @@
 [alias]
     a = add
     c = commit
+    ca = commit -a
     d = diff
     f = fetch
     l = log
@@ -39,4 +40,6 @@
     pl = pull
     r = reset
     rs = reset --soft
-    rh = reset --hard HEAD
+    rh = reset --hard
+    rsh = reset --soft HEAD~1
+    rhh = reset --hard HEAD~1
