@@ -1,16 +1,1 @@
-{
-    "1": {
-        "_id": 1,
-        "_date": "Fri Nov 18 2022",
-        "_timestamp": 1668779455092,
-        "description": "hi",
-        "isStarred": false,
-        "boards": [
-            "My Board"
-        ],
-        "_isTask": true,
-        "isComplete": false,
-        "inProgress": false,
-        "priority": 1
-    }
-}
+{}
