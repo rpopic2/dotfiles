@@ -121,3 +121,4 @@ if [ -f ~/.mybashrc ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

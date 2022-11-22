@@ -7,11 +7,18 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-surround'
+Plug 'itchyny/vim-cursorword'
 call plug#end()
 
 "nvim settings
 set background=light
-colorscheme rose-pine-light
+"colorscheme rose-pine-light
+
+"rust related settings
+syntax enable
+filetype plugin indent on
 
 set mouse=a
 
