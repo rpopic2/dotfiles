@@ -12,9 +12,16 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/vim-cursorword'
 call plug#end()
 
-"nvim settings
+"colorscheme corrections
 set background=light
+hi Pmenu ctermfg=White
+hi NvimInternalError ctermfg=White
+hi Visual ctermbg=Black
+hi MatchParen ctermbg=Black
+hi CursorColumn ctermfg=Black
+hi CocListBgWhite ctermfg=Black
 "colorscheme rose-pine-light
+"{}
 
 "rust related settings
 syntax enable
