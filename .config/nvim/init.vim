@@ -20,8 +20,9 @@ hi Visual ctermbg=Black
 hi MatchParen ctermbg=Black
 hi CursorColumn ctermfg=Black
 hi CocListBgWhite ctermfg=Black
-"colorscheme rose-pine-light
-"{}
+hi CocInlayHint ctermbg=Black
+hi Conceal ctermbg=LightYellow
+hi SignColumn ctermbg=Black
 
 "rust related settings
 syntax enable
