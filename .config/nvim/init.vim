@@ -41,10 +41,17 @@ set expandtab "You never want to se a \t agains inyour file, rather tabs keypres
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>" 
 
 map <space><space> :
+map <space>w :w<cr>
 map <space>f :Files<cr>
-
+" parentheses maps
 inoremap { {}<left>
 inoremap {<cr> {<cr>}<esc>O
+inoremap {<cr><cr> <cr>{<cr>}<esc>O
 imap ( ()<left>
+imap () ()
 imap [ []<left>
-imap < <><left>
+imap [] []
+inoremap < <><left>
+inoremap <<space> <<space>
+inoremap <> <>
+inoremap << <<
