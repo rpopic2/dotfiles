@@ -5,3 +5,6 @@ export PS1="${debian_chroot:+($debian_chroot)}\e[0;32m🌿\w\e[m "
 export LESS='--mouse --wheel-lines=2'
 export BAT_THEME="base16"
 
+if test -z $TMUX; then
+    tmux a || tmux
+fi

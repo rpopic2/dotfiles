@@ -40,6 +40,7 @@ set expandtab "You never want to se a \t agains inyour file, rather tabs keypres
 "key bindings
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>" 
 
+inoremap <esc><esc> <esc>A;<esc>
 map <space><space> :
 map <space>w :w<cr>
 map <space>f :Files<cr>
@@ -47,11 +48,8 @@ map <space>f :Files<cr>
 inoremap { {}<left>
 inoremap {<cr> {<cr>}<esc>O
 inoremap {<cr><cr> <cr>{<cr>}<esc>O
-imap ( ()<left>
-imap () ()
-imap [ []<left>
-imap [] []
-inoremap < <><left>
-inoremap <<space> <<space>
-inoremap <> <>
-inoremap << <<
+inoremap ((  ()<left>
+inoremap (()  ()
+inoremap [[ []<left>
+inoremap << <><left>
+inoremap <<<space> <<<space>
