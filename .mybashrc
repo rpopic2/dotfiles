@@ -1,7 +1,7 @@
 set -o vi
 
 export PATH=$PATH:~/.local/bin/bat:~/scripts
-export PS1="${debian_chroot:+($debian_chroot)}\e[0;32m🌿\w\e[m "
+export PS1="${debian_chroot:+($debian_chroot)}🌿\w "
 export LESS='--mouse --wheel-lines=2'
 export BAT_THEME="base16"
 
