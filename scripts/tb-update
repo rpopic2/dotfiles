@@ -1,0 +1,5 @@
+#!/bin/bash
+DATE=$(date)
+git -C ~/.taskbook/ pull 
+git -C ~/.taskbook/ commit -am "update $DATE" 
+git -C ~/.taskbook/ push

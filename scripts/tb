@@ -1,0 +1,3 @@
+#!/bin/bash
+tb $1 $@
+~/scripts/tb-update &> /dev/null &
