@@ -28,6 +28,7 @@
 	colorMoved = default
 [alias]
     a = add
+    b = branch
     c = commit
     ca = commit -a
     d = diff
