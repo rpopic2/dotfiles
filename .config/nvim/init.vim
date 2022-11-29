@@ -56,7 +56,7 @@ set expandtab "You never want to se a \t agains inyour file, rather tabs keypres
 
 map <space><space> :
 map <space>w :w<cr>
-map <space>wq :wq<cr>
+map <space>q :q<cr>
 map <space>rc :e $MYVIMRC<cr>
 map <space>rcc :e ~/.config/nvim/cocinit.vim<cr>
 map <space>fi :Files<cr>
