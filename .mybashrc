@@ -5,6 +5,11 @@ export PS1="${debian_chroot:+($debian_chroot)}🌿\w "
 export LESS='--mouse --wheel-lines=2'
 export BAT_THEME="base16"
 
-if test -z $TMUX; then
-    tmux a || tmux
+USRC=$(who -q | tail -1 | cut -d= -f2)
+
+if test $USRC -le 2; then
+    cat /var/run/motd.dynamic
+    if test -z $TMUX; then
+        tmux a || tmux
+    fi
 fi
