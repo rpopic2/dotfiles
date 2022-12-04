@@ -1,3 +1,5 @@
 #!/bin/bash
 tb $1 $@
-~/scripts/tb-update &> /dev/null &
+if test $1 eq "-t"; then
+    ~/scripts/tb-update &> /dev/null &
+fi

@@ -54,6 +54,7 @@ set expandtab "You never want to se a \t agains inyour file, rather tabs keypres
 
 " key bindings
 
+noremap <esc><esc> <esc>A;<esc>
 map <space><space> :
 map <space>w :w<cr>
 map <space>q :q<cr>
