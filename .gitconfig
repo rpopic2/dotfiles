@@ -27,7 +27,21 @@
 [diff]
 	colorMoved = default
 [alias]
-    s = status
-    f = fetch
+    a = add
+    b = branch
     c = commit
+    ca = commit -a
+    d = diff
+    f = fetch
+    l = log
+    s = status
     sw = switch
+    m = merge
+    p = push
+    pu = push
+    pl = pull
+    r = reset
+    rs = reset --soft
+    rh = reset --hard
+    rsh = reset --soft HEAD~1
+    rhh = reset --hard HEAD~1
