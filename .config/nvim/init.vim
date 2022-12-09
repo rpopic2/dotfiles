@@ -61,4 +61,4 @@ map <space>q :q<cr>
 map <space>rc :e $MYVIMRC<cr>
 map <space>rcc :e ~/.config/nvim/cocinit.vim<cr>
 map <space>fi :Files<cr>
-map <space>/ :noh
+map <space>/ :noh<cr>
