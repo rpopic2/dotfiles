@@ -62,3 +62,7 @@ map <space>rc :e $MYVIMRC<cr>
 map <space>rcc :e ~/.config/nvim/cocinit.vim<cr>
 map <space>fi :Files<cr>
 map <space>/ :noh<cr>
+
+" parantheses matching
+ino {<cr> <cr>{<cr>}<esc>O
+au BufNewFile,BufRead *.rs ino {<cr> {<cr>}<esc>O
