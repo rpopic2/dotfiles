@@ -8,7 +8,9 @@ export BAT_THEME="base16"
 USRC=$(who -q | tail -1 | cut -d= -f2)
 
 if test $USRC -le 2; then
-    cat /var/run/motd.dynamic
+    if test -f /var/run/motd.dynamic; then
+        cat /var/run/motd.dynamic
+    fi
     if test -z $TMUX; then
         tmux a || tmux
     fi
