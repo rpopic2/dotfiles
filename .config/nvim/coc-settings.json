@@ -4,7 +4,12 @@
           "command": "csharp-ls",
           "filetypes": ["cs"],
           "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
+        },
+        "clangd" :{
+            "command": "/usr/bin/clangd",
+            "filetypes": ["c", "cpp"],
+            "rootPatterns": [".git/", ".vim/"],
+            "args": []
         }
-    },
-    "clangd.path": "/usr/bin/clangd",
+    }
 }
