@@ -67,7 +67,7 @@ map <space>fi :Files<cr>
 map <space>/ :noh<cr>
 
 " parantheses matching
-ino {<cr> <esc>i{<cr>}<esc>O
+ino {<cr> <esc>a{<cr>}<esc>O
 au BufNewFile,BufRead *.rs ino {<cr> {<cr>}<esc>O
 
 " nvim cursorline
