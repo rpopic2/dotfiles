@@ -15,3 +15,7 @@ if test $USRC -le 2; then
         tmux a || tmux
     fi
 fi
+
+if test -f ~/.localbashrc; then
+    . ~/.localbashrc
+fi
