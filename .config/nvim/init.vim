@@ -22,9 +22,9 @@ if 0
     hi Visual ctermbg=Black
     hi CursorColumn ctermfg=Black
     hi CocListBgWhite ctermfg=Black
-    hi CocInlayHint ctermbg=Black
     hi Conceal ctermbg=LightYellow
 endif
+hi CocInlayHint ctermfg=Black
 hi SignColumn ctermbg=None
 hi MatchParen ctermbg=DarkGrey
 
@@ -68,7 +68,6 @@ map <space>/ :noh<cr>
 
 " parantheses matching
 ino {<cr> <esc>a{<cr>}<esc>O
-au BufNewFile,BufRead *.rs ino {<cr> {<cr>}<esc>O
 
 " nvim cursorline
 lua << EOF
