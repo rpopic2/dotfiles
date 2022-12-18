@@ -45,3 +45,8 @@
     rh = reset --hard
     rsh = reset --soft HEAD~1
     rhh = reset --hard HEAD~1
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
