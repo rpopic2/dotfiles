@@ -20,3 +20,4 @@ fi
 if test -f ~/.localbashrc; then
     . ~/.localbashrc
 fi
+git fetch&
