@@ -65,6 +65,7 @@ map \rc :e $MYVIMRC<cr>
 map \rcc :e ~/.config/nvim/cocinit.vim<cr>
 map \rcg :e ~/.config/nvim/ginit.vim<cr>
 map <space>fi :Files<cr>
+map <c-p> :GitFiles<cr>
 map <space>/ :noh<cr>
 map <space>g :G
 
