@@ -23,6 +23,11 @@
 
 [merge]
 	conflictstyle = diff3
+    tool = unityyamlmerge
+[mergetool "unityyamlmerge"]
+    trustExitCode = false;
+    cmd = '/Applications/Unity/Hub/Editor/2021.3.2f1-arm64/Unity.app/Contents/Tools/UnityYAMLMerge' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
 
 [diff]
 	colorMoved = default

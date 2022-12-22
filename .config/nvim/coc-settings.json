@@ -1,15 +1,15 @@
 {
     "languageserver": {
         "csharp-ls": {
-          "command": "csharp-ls",
+          "command": "~/.dotnet/tools/csharp-ls",
           "filetypes": ["cs"],
-          "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
+          "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"],
+          "env": {"FrameworkPathOverride":"/lib/mono/4.7.2-api"}
         },
         "clangd" :{
             "command": "/usr/bin/clangd",
             "filetypes": ["c", "cpp"],
-            "rootPatterns": [".git/", ".vim/"],
-            "args": []
+            "rootPatterns": [".git/", ".vim/"]
         }
     }
 }

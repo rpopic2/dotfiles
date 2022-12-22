@@ -5,18 +5,18 @@ endif
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'OmniSharp/omnisharp-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
-Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'yamatsum/nvim-cursorline'
-
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " rose-pine-light colorscheme corrections
-if 0
-    set background=light
+let color = split(execute('colorscheme'), '\n')
+if color[0] ==? 'rose-pine-dark'
+    set background=dark
     hi Pmenu ctermfg=White
     hi NvimInternalError ctermfg=White
     hi Visual ctermbg=Black
@@ -61,10 +61,12 @@ ino $$ <esc>A;<esc>
 map <space><space> :
 map <space>w :w<cr>
 map <space>q :q<cr>
-map <space>rc :e $MYVIMRC<cr>
-map <space>rcc :e ~/.config/nvim/cocinit.vim<cr>
+map \rc :e $MYVIMRC<cr>
+map \rcc :e ~/.config/nvim/cocinit.vim<cr>
+map \rcg :e ~/.config/nvim/ginit.vim<cr>
 map <space>fi :Files<cr>
 map <space>/ :noh<cr>
+map <space>g :G
 
 " parantheses matching
 ino {<cr> <esc>a{<cr>}<esc>O

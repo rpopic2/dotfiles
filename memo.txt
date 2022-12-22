@@ -16,8 +16,16 @@ runlevel[n].target
 # scan ip
 sudo nmap -sP 192.168.0.0/24
 
-# coc omnisharp setup
+# coc c# setup
 dotnet tool install --global csharp-ls
+:CocConfig
+        "csharp-ls": {
+          "command": "~/.dotnet/tools/csharp-ls",
+          "filetypes": ["cs"],
+          "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"],
+          }
+for Unity, add :
+          "env": {"FrameworkPathOverride":"/lib/mono/4.7.2-api"}
 
 #coc clangd
 :CocCommand clangd.install
