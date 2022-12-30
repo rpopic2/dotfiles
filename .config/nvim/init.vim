@@ -66,11 +66,24 @@ map \rcc :e ~/.config/nvim/cocinit.vim<cr>
 map \rcg :e ~/.config/nvim/ginit.vim<cr>
 map <space>fi :Files<cr>
 map <c-p> :GitFiles<cr>
+map <c-s-p> :tabnew<cr>:GitFiles<cr>
 map <space>/ :noh<cr>
-map <space>g :G
+map <space>g :G<space>
+map <space>t :tabnew<cr>
 
 " parantheses matching
 ino {<cr> <esc>a{<cr>}<esc>O
+ino {<s-cr> <esc>a{<cr>}<esc>O
+nor { s<cr>{<cr><esc>o}<esc>
+nor } cs{xkJJ
+vno } Jcs{x
+
+" comments
+aug slashes
+    au!
+    au BufEnter *.cpp map // ^i//<esc>
+    au BufEnter *.cpp map ?? ^xx
+aug end
 
 " nvim cursorline
 lua << EOF
@@ -82,7 +95,7 @@ require('nvim-cursorline').setup {
   },
   cursorword = {
     enable = true,
-    min_length = 2,
+    min_length = 1,
     hl = { ctermbg = Black },
   }
 }
