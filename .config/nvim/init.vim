@@ -81,8 +81,13 @@ vno } Jcs{x
 " comments
 aug slashes
     au!
-    au BufEnter *.cpp map // ^i//<esc>
-    au BufEnter *.cpp map ?? ^xx
+    au BufEnter *.{cpp,c,cs} map // ^i//<esc>
+    au BufEnter *.{cpp,c,cs} map ?? ^xx
+aug end
+aug sharp_slashes
+    au!
+    au BufEnter *.{vim,sh,bashrc} map // ^i//<esc>
+    au BufEnter *.{vim,sh,bashrc} map ?? ^xx
 aug end
 
 " nvim cursorline
