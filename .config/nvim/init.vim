@@ -10,6 +10,10 @@ Plug 'antoinemadec/coc-fzf'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'yamatsum/nvim-cursorline'
+Plug 'preservim/tagbar'
+Plug 'preservim/vimux'
+" lang specific
+Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
@@ -42,8 +46,8 @@ set statusline+=%y
 
 
 " rust related settings
-syntax enable
-filetype plugin indent on
+" syntax enable
+" filetype plugin indent on
 
 " general setings
 set mouse=a
@@ -65,7 +69,7 @@ map \rc :e $MYVIMRC<cr>
 map \rcc :e ~/.config/nvim/cocinit.vim<cr>
 map \rcg :e ~/.config/nvim/ginit.vim<cr>
 map <space>fi :Files<cr>
-map <c-p> :GitFiles<cr>
+"map <c-p> :GitFiles<cr>
 map <c-s-p> :tabnew<cr>:GitFiles<cr>
 map <space>/ :noh<cr>
 map <space>g :G<space>
