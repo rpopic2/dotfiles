@@ -45,6 +45,8 @@
     p = push
     pu = push
     pl = pull
+    re = restore
+    res = restore --staged
     r = reset
     rs = reset --soft
     rh = reset --hard
