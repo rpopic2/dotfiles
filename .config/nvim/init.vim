@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'yamatsum/nvim-cursorline'
 Plug 'preservim/tagbar'
 Plug 'preservim/vimux'
+Plug 'preservim/nerdtree'
 " lang specific
 Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
