@@ -58,23 +58,52 @@ set timeoutlen=500
 set tabstop=4 "How many columns of whitespace is a \t char worth
 set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is worth?
 set softtabstop=4 "How many columns of whitespace is a tab keypress of a backspace keypress worth
-set expandtab "You never want to se a \t agains inyour file, rather tabs keypresses will be expanded into spaces
+set expandtab "You never want to see a \t again in your file, rather tabs keypresses will be expanded into spaces
 
 " key bindings
 
+    "vim
 ino $$ <esc>A;<esc>
 map <space><space> :
 map <space>w :w<cr>
 map <space>q :q<cr>
+map <space>q! :q!<cr>
+map <space>t :tabnew<cr>
+map <space>T :tabnew<cr><c-o>
+map <space>v :vsplit<cr>
+map <space>s :split<cr>
+map <space>/ :noh<cr>
+map <space>r :registers<cr>
+ino <c-u> <c-o>d^<del>
+
+    "fzf.vim
+map <cr>F :Files<cr>
+map <cr>f :GitFiles<cr>
+map <cr>g :GitFiles?<cr>
+map <cr>l :BCommits<cr>
+map <cr>L :Commits<cr>
+map <cr>b :Buffers<cr>
+map <cr>t :Tags<cr>
+map <cr><cr> :BLines<cr>
+map <cr><s-cr> :Lines<cr>
+map <cr>hh :History<cr>
+map <cr>h/ :History/<cr>
+map <cr>h: :History:<cr>
+map <cr>H :Hel!<cr>
+map <cr>m :Marks<cr>
+map <cr>: :Commands<cr>
+let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-\']
+
+map <cr>n :NERDTreeToggle<cr>
+map <cr>v :VimuxOpenRunner<cr>
+
+
+    "rc's
 map \rc :e $MYVIMRC<cr>
 map \rcc :e ~/.config/nvim/cocinit.vim<cr>
 map \rcg :e ~/.config/nvim/ginit.vim<cr>
-map <space>fi :Files<cr>
-"map <c-p> :GitFiles<cr>
-map <c-s-p> :tabnew<cr>:GitFiles<cr>
-map <space>/ :noh<cr>
+
 map <space>g :G<space>
-map <space>t :tabnew<cr>
 
 " parantheses matching
 ino {<cr> <esc>a{<cr>}<esc>O
@@ -91,8 +120,8 @@ aug slashes
 aug end
 aug sharp_slashes
     au!
-    au BufEnter *.{vim,sh,bashrc} map // ^i//<esc>
-    au BufEnter *.{vim,sh,bashrc} map ?? ^xx
+    au BufEnter *.{vim,sh,bashrc} map // ^i#<esc>
+    au BufEnter *.{vim,sh,bashrc} map ?? ^x
 aug end
 
 " nvim cursorline
