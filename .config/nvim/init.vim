@@ -106,10 +106,10 @@ map \rcg :e ~/.config/nvim/ginit.vim<cr>
 map <space>g :G<space>
 
 " parantheses matching
-ino {<cr> <esc>a{<cr>}<esc>O
-ino {<s-cr> <esc>a{<cr>}<esc>O
+ino {<cr> <c-g>u{<cr>}<esc>O
+ino {<s-cr> <c-g>u{<cr>}<esc>O
 nor { s<cr>{<cr><esc>o}<esc>
-nor } cs{xkJJ
+nmap } cs{xkJJ
 vno } Jcs{x
 
 " comments
