@@ -13,6 +13,7 @@ Plug 'yamatsum/nvim-cursorline'
 Plug 'preservim/tagbar'
 Plug 'preservim/vimux'
 Plug 'preservim/nerdtree'
+Plug 'github/copilot.vim'
 " lang specific
 Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
@@ -59,6 +60,7 @@ set tabstop=4 "How many columns of whitespace is a \t char worth
 set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is worth?
 set softtabstop=4 "How many columns of whitespace is a tab keypress of a backspace keypress worth
 set expandtab "You never want to see a \t again in your file, rather tabs keypresses will be expanded into spaces
+set nu rnu
 
 " key bindings
 
@@ -80,12 +82,12 @@ ino <c-u> <c-o>d^<del>
 map <cr>F :Files<cr>
 map <cr>f :GitFiles<cr>
 map <cr>g :GitFiles?<cr>
-map <cr>l :BCommits<cr>
-map <cr>L :Commits<cr>
+map <cr>c :BCommits<cr>
+map <cr>C :Commits<cr>
 map <cr>b :Buffers<cr>
 map <cr>t :Tags<cr>
 map <cr><cr> :BLines<cr>
-map <cr><s-cr> :Lines<cr>
+map <cr>l :Lines<cr>
 map <cr>hh :History<cr>
 map <cr>h/ :History/<cr>
 map <cr>h: :History:<cr>
@@ -97,6 +99,15 @@ let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-\']
 map <cr>n :NERDTreeToggle<cr>
 map <cr>v :VimuxOpenRunner<cr>
 
+    " korean
+map ㅗ h
+map ㅓ j
+map ㅏ k
+map ㅣ l
+map ㅐ o
+map ㅒ O
+map ㅑ i
+
 
     "rc's
 map \rc :e $MYVIMRC<cr>
@@ -104,6 +115,11 @@ map \rcc :e ~/.config/nvim/cocinit.vim<cr>
 map \rcg :e ~/.config/nvim/ginit.vim<cr>
 
 map <space>g :G<space>
+
+" copilot
+imap <silent><script><expr> <c-j> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
 
 " parantheses matching
 ino {<cr> <c-g>u{<cr>}<esc>O

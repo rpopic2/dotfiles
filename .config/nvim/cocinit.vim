@@ -43,8 +43,8 @@ omap ac <Plug>(coc-classobj-a)
 
 inoremap <expr><c-n> coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
 inoremap <expr><c-p> coc#pum#visible() ? coc#pum#prev(1) : coc#refresh()
-inoremap <expr><c-f> coc#pum#visible() ? coc#pum#scroll(1) : coc#refresh()
-inoremap <expr><c-b> coc#pum#visible() ? coc#pum#scroll(0) : coc#refresh()
+inoremap <expr><c-d> coc#pum#visible() ? coc#pum#scroll(1) : coc#refresh()
+inoremap <expr><c-u> coc#pum#visible() ? coc#pum#scroll(0) : coc#refresh()
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
