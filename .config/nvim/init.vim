@@ -131,8 +131,8 @@ vno } Jcs{x
 " comments
 aug slashes
     au!
-    au BufEnter *.{cpp,c,cs} map // ^i//<esc>
-    au BufEnter *.{cpp,c,cs} map ?? ^xx
+    au BufEnter *.{cpp,c,cs,rs} map // ^i//<esc>
+    au BufEnter *.{cpp,c,cs,rs} map ?? ^xx
 aug end
 aug sharp_slashes
     au!
