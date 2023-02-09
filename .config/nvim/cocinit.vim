@@ -106,6 +106,10 @@ nmap <space>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <space>f  <Plug>(coc-format-selected)
 nmap <space>f  <Plug>(coc-format-selected)
+aug rustfmt
+    au!
+    au BufEnter *.rs map <space>f :RustFmt<cr>
+aug end
 
 " Applying codeAction to the selected region.
 " Example: `<space>aap` for current paragraph

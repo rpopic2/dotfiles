@@ -19,6 +19,7 @@ Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
+set background=light
 " rose-pine-light colorscheme corrections
 let color = split(execute('colorscheme'), '\n')
 if color[0] ==? 'rose-pine-dark'
@@ -33,6 +34,7 @@ endif
 hi CocInlayHint ctermfg=Black
 hi SignColumn ctermbg=None
 hi MatchParen ctermbg=DarkGrey
+hi Search ctermfg=White
 
 " coc related settings
 set updatetime=300
@@ -79,8 +81,8 @@ map <space>r :registers<cr>
 ino <c-u> <c-o>d^<del>
 
     "fzf.vim
-map <cr>F :Files<cr>
-map <cr>f :GitFiles<cr>
+map <cr>f :Files<cr>
+map <cr>F :GitFiles<cr>
 map <cr>g :GitFiles?<cr>
 map <cr>c :BCommits<cr>
 map <cr>C :Commits<cr>
