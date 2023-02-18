@@ -19,7 +19,7 @@ Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
-set background=light
+set background=dark
 " rose-pine-light colorscheme corrections
 let color = split(execute('colorscheme'), '\n')
 if color[0] ==? 'rose-pine-dark'
