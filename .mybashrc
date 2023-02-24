@@ -8,6 +8,21 @@ export BAT_THEME="GitHub"
 
 USRC=$(who -q | tail -1 | cut -d= -f2)
 
+# bash parameter completion for the dotnet CLI
+
+function _dotnet_bash_complete()
+{
+  local cur="${COMP_WORDS[COMP_CWORD]}" IFS=$'\n'
+  local candidates
+
+  read -d '' -ra candidates < <(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)
+
+  read -d '' -ra COMPREPLY < <(compgen -W "${candidates[*]:-}" -- "$cur")
+}
+
+complete -f -F _dotnet_bash_complete dotnet
+
+# attatch tmux automatically
 if test $USRC -le 2; then
     if test -f /var/run/motd.dynamic; then
         cat /var/run/motd.dynamic
@@ -17,7 +32,10 @@ if test $USRC -le 2; then
     fi
 fi
 
+
+# platform secific localbashrc
 if test -f ~/.localbashrc; then
     . ~/.localbashrc
 fi
+
 git fetch&

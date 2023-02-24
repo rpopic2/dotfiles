@@ -9,7 +9,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'yamatsum/nvim-cursorline'
+Plug 'tpope/vim-commentary'
+Plug 'rpopic2/nvim-cursorline'
 Plug 'preservim/tagbar'
 Plug 'preservim/vimux'
 Plug 'preservim/nerdtree'
@@ -19,7 +20,7 @@ Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
-set background=dark
+set background=light
 " rose-pine-light colorscheme corrections
 let color = split(execute('colorscheme'), '\n')
 if color[0] ==? 'rose-pine-dark'
@@ -30,11 +31,11 @@ if color[0] ==? 'rose-pine-dark'
     hi CursorColumn ctermfg=Black
     hi CocListBgWhite ctermfg=Black
     hi Conceal ctermbg=LightYellow
+    hi MatchParen ctermbg=DarkGrey
 endif
+hi Search ctermfg=White
 hi CocInlayHint ctermfg=Black
 hi SignColumn ctermbg=None
-hi MatchParen ctermbg=DarkGrey
-hi Search ctermfg=White
 
 " coc related settings
 set updatetime=300
@@ -71,7 +72,6 @@ ino $$ <esc>A;<esc>
 map <space><space> :
 map <space>w :w<cr>
 map <space>q :q<cr>
-map <space>q! :q!<cr>
 map <space>t :tabnew<cr>
 map <space>T :tabnew<cr><c-o>
 map <space>v :vsplit<cr>
@@ -121,6 +121,8 @@ map <space>g :G<space>
 " copilot
 imap <silent><script><expr> <c-j> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+" c-] to dismiss
+" M-] to next, M-[ to prev
 
 
 " parantheses matching

@@ -4,11 +4,8 @@
           "command": "~/.dotnet/tools/csharp-ls",
           "filetypes": ["cs"],
           "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
-        },
-        "clangd" :{
-            "command": "/usr/bin/clangd",
-            "filetypes": ["c", "cpp"],
-            "rootPatterns": [".git/", ".vim/"]
         }
-    }
+    },
+    "snippets.ultisnips.pythonPrompt": false,
+    "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd"
 }
