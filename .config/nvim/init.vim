@@ -15,10 +15,51 @@ Plug 'preservim/tagbar'
 Plug 'preservim/vimux'
 Plug 'preservim/nerdtree'
 Plug 'github/copilot.vim'
+Plug 'davidgranstrom/scnvim'
 " lang specific
 Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
+
+" scnvim setup
+map <F1> :SCNvimStart<cr>
+lua << EOF
+require('scnvim').setup()
+EOF
+lua << EOF
+local scnvim = require 'scnvim'
+local map = scnvim.map
+local map_expr = scnvim.map_expr
+scnvim.setup {
+  keymaps = {
+    ['<M-e>'] = map('editor.send_line', {'i', 'n'}),
+    ['<C-p>'] = {
+      map('editor.send_block', {'i', 'n'}),
+      map('editor.send_selection', 'x'),
+    },
+    ['<F3>'] = map('sclang.stop'),
+    ['<F5>'] = map('postwin.toggle'),
+    ['<space>sp'] = map('postwin.toggle', 'n'),
+    ['<M-L>'] = map('postwin.clear', {'n', 'i'}),
+    ['<C-k>'] = map('signature.show', {'n', 'i'}),
+    ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
+    ['<space>st'] = map('sclang.start'),
+    ['<space>sk'] = map('sclang.recompile'),
+    ['<F2>'] = map_expr('s.boot'),
+    ['<F4>'] = map_expr('s.meter'),
+  },
+  editor = {
+    highlight = {
+      color = 'IncSearch',
+    },
+  },
+  postwin = {
+    float = {
+      enabled = true,
+    },
+  },
+}
+EOF
 
 set background=light
 " rose-pine-light colorscheme corrections
@@ -64,6 +105,10 @@ set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is wor
 set softtabstop=4 "How many columns of whitespace is a tab keypress of a backspace keypress worth
 set expandtab "You never want to see a \t again in your file, rather tabs keypresses will be expanded into spaces
 set nu rnu
+"shows trailling whitespaces
+set list listchars=trail:·
+
+
 
 " key bindings
 
@@ -83,7 +128,7 @@ ino <c-u> <c-o>d^<del>
     "fzf.vim
 map <cr>f :Files<cr>
 map <cr>F :GitFiles<cr>
-map <cr>g :GitFiles?<cr>
+map <cr>g :GitFiles!?<cr>
 map <cr>c :BCommits<cr>
 map <cr>C :Commits<cr>
 map <cr>b :Buffers<cr>
@@ -100,6 +145,7 @@ let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-\']
 
 map <cr>n :NERDTreeToggle<cr>
 map <cr>v :VimuxOpenRunner<cr>
+map <cr>T :TagbarToggle<cr>
 
     " korean
 map ㅗ h
@@ -132,17 +178,23 @@ nor { s<cr>{<cr><esc>o}<esc>
 nmap } cs{xkJJ
 vno } Jcs{x
 
+" custom scrolling
+nno zj <c-e>
+nno zk <c-y>
+
 " comments
 aug slashes
     au!
     au BufEnter *.{cpp,c,cs,rs} map // ^i//<esc>
     au BufEnter *.{cpp,c,cs,rs} map ?? ^xx
+    au FileType cs setlocal commentstring=//%s
 aug end
 aug sharp_slashes
     au!
     au BufEnter *.{vim,sh,bashrc} map // ^i#<esc>
     au BufEnter *.{vim,sh,bashrc} map ?? ^x
 aug end
+
 
 " nvim cursorline
 lua << EOF

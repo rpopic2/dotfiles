@@ -113,12 +113,12 @@ aug end
 
 " Applying codeAction to the selected region.
 " Example: `<space>aap` for current paragraph
-xmap <space>a  <Plug>(coc-codeaction-selected)
-nmap <space>a  <Plug>(coc-codeaction-selected)
+xmap <silent> <space>a  <Plug>(coc-codeaction-selected)
+nmap <silent> <space>a  <Plug>(coc-codeaction-selected)
 
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <space>ac  <Plug>(coc-codeaction)
+nmap <silent> <space>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <space>qf  <Plug>(coc-fix-current)
 
