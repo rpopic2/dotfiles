@@ -126,7 +126,7 @@ map <space>r :registers<cr>
 ino <c-u> <c-o>d^<del>
 
     "fzf.vim
-map <cr>f :Files<cr>
+map <cr>f :Files!<cr>
 map <cr>F :GitFiles<cr>
 map <cr>g :GitFiles!?<cr>
 map <cr>c :BCommits<cr>
