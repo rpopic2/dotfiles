@@ -107,6 +107,7 @@ set expandtab "You never want to see a \t again in your file, rather tabs keypre
 set nu rnu
 "shows trailling whitespaces
 set list listchars=trail:·
+imap <c-d> <del>
 
 
 
