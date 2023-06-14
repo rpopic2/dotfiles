@@ -16,6 +16,7 @@ Plug 'preservim/vimux'
 Plug 'preservim/nerdtree'
 Plug 'github/copilot.vim'
 Plug 'davidgranstrom/scnvim'
+Plug 'puremourning/vimspector'
 " lang specific
 Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
@@ -104,9 +105,9 @@ set tabstop=4 "How many columns of whitespace is a \t char worth
 set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is worth?
 set softtabstop=4 "How many columns of whitespace is a tab keypress of a backspace keypress worth
 set expandtab "You never want to see a \t again in your file, rather tabs keypresses will be expanded into spaces
-set nu rnu
+set nu
 "shows trailling whitespaces
-set list listchars=trail:·
+set list listchars=trail:·,tab:\ \ 
 imap <c-d> <del>
 
 

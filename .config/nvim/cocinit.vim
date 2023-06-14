@@ -82,8 +82,10 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
+" coc-fzf
 " Mappings for CoCList
 " Show all diagnostics.
+let g:coc_fzf_preview_fullscreen = 1
 nnoremap <silent><nowait> <space>d  :<C-u>CocFzfList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocFzfList extensions<cr>
