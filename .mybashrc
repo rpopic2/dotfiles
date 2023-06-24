@@ -4,7 +4,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH=$PATH:~/.local/bin/bat:~/scripts
 export PS1="${debian_chroot:+($debian_chroot)}\h\w "
 export LESS='--mouse --wheel-lines=2'
-export BAT_THEME="GitHub"
+export BAT_THEME="base16"
+export VISUAL=nvim
+export EDITOR=nvim
 
 USRC=$(who -q | tail -1 | cut -d= -f2)
 
@@ -23,14 +25,14 @@ function _dotnet_bash_complete()
 complete -f -F _dotnet_bash_complete dotnet
 
 # attatch tmux automatically
-if test $USRC -le 2; then
-    if test -f /var/run/motd.dynamic; then
-        cat /var/run/motd.dynamic
-    fi
-    if test -z $TMUX; then
-        tmux a || tmux
-    fi
-fi
+#if test $USRC -le 2; then
+#    if test -f /var/run/motd.dynamic; then
+#        cat /var/run/motd.dynamic
+#    fi
+#    if test -z $TMUX; then
+#        tmux a || tmux
+#    fi
+#fi
 
 
 # platform secific localbashrc

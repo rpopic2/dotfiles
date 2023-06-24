@@ -14,7 +14,6 @@ Plug 'rpopic2/nvim-cursorline'
 Plug 'preservim/tagbar'
 Plug 'preservim/vimux'
 Plug 'preservim/nerdtree'
-Plug 'github/copilot.vim'
 Plug 'davidgranstrom/scnvim'
 Plug 'puremourning/vimspector'
 " lang specific
@@ -62,7 +61,7 @@ scnvim.setup {
 }
 EOF
 
-set background=light
+set background=dark
 " rose-pine-light colorscheme corrections
 let color = split(execute('colorscheme'), '\n')
 if color[0] ==? 'rose-pine-dark'
@@ -75,8 +74,8 @@ if color[0] ==? 'rose-pine-dark'
     hi Conceal ctermbg=LightYellow
     hi MatchParen ctermbg=DarkGrey
 endif
-hi Search ctermfg=White
-hi CocInlayHint ctermfg=Black
+" hi Search ctermfg=White
+hi CocInlayHint ctermfg=DarkGrey
 hi SignColumn ctermbg=None
 
 " coc related settings
@@ -115,10 +114,8 @@ imap <c-d> <del>
 " key bindings
 
     "vim
-ino $$ <esc>A;<esc>
 map <space><space> :
 map <space>w :w<cr>
-map <space>q :q<cr>
 map <space>t :tabnew<cr>
 map <space>T :tabnew<cr><c-o>
 map <space>v :vsplit<cr>
