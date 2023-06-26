@@ -14,52 +14,11 @@ Plug 'rpopic2/nvim-cursorline'
 Plug 'preservim/tagbar'
 Plug 'preservim/vimux'
 Plug 'preservim/nerdtree'
-Plug 'davidgranstrom/scnvim'
 Plug 'puremourning/vimspector'
 " lang specific
 Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
-
-" scnvim setup
-map <F1> :SCNvimStart<cr>
-lua << EOF
-require('scnvim').setup()
-EOF
-lua << EOF
-local scnvim = require 'scnvim'
-local map = scnvim.map
-local map_expr = scnvim.map_expr
-scnvim.setup {
-  keymaps = {
-    ['<M-e>'] = map('editor.send_line', {'i', 'n'}),
-    ['<C-p>'] = {
-      map('editor.send_block', {'i', 'n'}),
-      map('editor.send_selection', 'x'),
-    },
-    ['<F3>'] = map('sclang.stop'),
-    ['<F5>'] = map('postwin.toggle'),
-    ['<space>sp'] = map('postwin.toggle', 'n'),
-    ['<M-L>'] = map('postwin.clear', {'n', 'i'}),
-    ['<C-k>'] = map('signature.show', {'n', 'i'}),
-    ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
-    ['<space>st'] = map('sclang.start'),
-    ['<space>sk'] = map('sclang.recompile'),
-    ['<F2>'] = map_expr('s.boot'),
-    ['<F4>'] = map_expr('s.meter'),
-  },
-  editor = {
-    highlight = {
-      color = 'IncSearch',
-    },
-  },
-  postwin = {
-    float = {
-      enabled = true,
-    },
-  },
-}
-EOF
 
 set background=dark
 " rose-pine-light colorscheme corrections
@@ -77,6 +36,7 @@ endif
 " hi Search ctermfg=White
 hi CocInlayHint ctermfg=DarkGrey
 hi SignColumn ctermbg=None
+hi MatchParen ctermbg=DarkGrey
 
 " coc related settings
 set updatetime=300
@@ -99,6 +59,7 @@ set statusline+=%y
 set mouse=a
 set clipboard+=unnamedplus
 set timeoutlen=500
+let g:loaded_perl_provider = 0
 " tab settings
 set tabstop=4 "How many columns of whitespace is a \t char worth
 set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is worth?
