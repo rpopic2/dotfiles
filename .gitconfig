@@ -52,6 +52,9 @@
     rh = reset --hard
     rsh = reset --soft HEAD~1
     rhh = reset --hard HEAD~1
+	sdiff = !git diff && git submodule foreach 'git diff'
+	spush = push --recurse-submodules=on-demand
+	supdate = submodule update --remote --merge
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process

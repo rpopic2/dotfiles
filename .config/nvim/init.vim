@@ -12,7 +12,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'rpopic2/nvim-cursorline'
 Plug 'preservim/tagbar'
-Plug 'preservim/vimux'
 Plug 'preservim/nerdtree'
 Plug 'puremourning/vimspector'
 " lang specific
@@ -36,7 +35,7 @@ endif
 " hi Search ctermfg=White
 hi CocInlayHint ctermfg=DarkGrey
 hi SignColumn ctermbg=None
-hi MatchParen ctermbg=DarkGrey
+hi MatchParen ctermbg=Black ctermfg=Grey
 
 " coc related settings
 set updatetime=300
@@ -79,20 +78,26 @@ map <space><space> :
 map <space>w :w<cr>
 map <space>t :tabnew<cr>
 map <space>T :tabnew<cr><c-o>
+map <space>q :tabonly<cr>
+map <space>m :tabmove 
 map <space>v :vsplit<cr>
 map <space>s :split<cr>
 map <space>/ :noh<cr>
 map <space>r :registers<cr>
 ino <c-u> <c-o>d^<del>
+map <c-w>1 :tabmove 1<cr>
+map <c-w>2 :tabmove 2<cr>
+map <c-w>0 :tabmove 0<cr>
 
     "fzf.vim
 map <cr>f :Files!<cr>
-map <cr>F :GitFiles<cr>
-map <cr>g :GitFiles!?<cr>
+map <cr>g :GitFiles!<cr>
+map <cr>d :GitFiles!?<cr>
 map <cr>c :BCommits<cr>
 map <cr>C :Commits<cr>
 map <cr>b :Buffers<cr>
 map <cr>t :Tags<cr>
+map <cr>T :Ag todo<cr>
 map <cr><cr> :BLines<cr>
 map <cr>l :Lines<cr>
 map <cr>hh :History<cr>
@@ -125,8 +130,8 @@ map \rcg :e ~/.config/nvim/ginit.vim<cr>
 map <space>g :G<space>
 
 " copilot
-imap <silent><script><expr> <c-j> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
+"imap <silent><script><expr> <c-j> copilot#Accept("\<CR>")
+"let g:copilot_no_tab_map = v:true
 " c-] to dismiss
 " M-] to next, M-[ to prev
 
@@ -145,14 +150,14 @@ nno zk <c-y>
 " comments
 aug slashes
     au!
-    au BufEnter *.{cpp,c,cs,rs} map // ^i//<esc>
-    au BufEnter *.{cpp,c,cs,rs} map ?? ^xx
+    au BufEnter *.{cpp,c,cs,rs} map // ^i// <esc>
+    au BufEnter *.{cpp,c,cs,rs} map ?? ^xxx
     au FileType cs setlocal commentstring=//%s
 aug end
 aug sharp_slashes
     au!
-    au BufEnter *.{vim,sh,bashrc} map // ^i#<esc>
-    au BufEnter *.{vim,sh,bashrc} map ?? ^x
+    au BufEnter *.{vim,sh,bashrc} map // ^i# <esc>
+    au BufEnter *.{vim,sh,bashrc} map ?? ^xx
 aug end
 
 
@@ -171,3 +176,7 @@ require('nvim-cursorline').setup {
   }
 }
 EOF
+
+" vimspector
+
+let g:vimspector_enable_mappings='HUMAN'
