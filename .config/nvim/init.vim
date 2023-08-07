@@ -11,31 +11,21 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'rpopic2/nvim-cursorline'
+Plug 'rpopic2/authentic-gh.vim'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'puremourning/vimspector'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " lang specific
 Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
-set background=dark
-" rose-pine-light colorscheme corrections
-let color = split(execute('colorscheme'), '\n')
-if color[0] ==? 'rose-pine-dark'
-    set background=dark
-    hi Pmenu ctermfg=White
-    hi NvimInternalError ctermfg=White
-    hi Visual ctermbg=Black
-    hi CursorColumn ctermfg=Black
-    hi CocListBgWhite ctermfg=Black
-    hi Conceal ctermbg=LightYellow
-    hi MatchParen ctermbg=DarkGrey
-endif
-" hi Search ctermfg=White
-hi CocInlayHint ctermfg=DarkGrey
-hi SignColumn ctermbg=None
-hi MatchParen ctermbg=Black ctermfg=Grey
+source ~/.config/nvim/plugins/treesitter.lua
+
+" color themes
+" set background=light
+colorscheme gh-light
 
 " coc related settings
 set updatetime=300
@@ -88,6 +78,8 @@ ino <c-u> <c-o>d^<del>
 map <c-w>1 :tabmove 1<cr>
 map <c-w>2 :tabmove 2<cr>
 map <c-w>0 :tabmove 0<cr>
+map \l :set bg=light<cr>
+map \d :set bg=dark<cr>
 
     "fzf.vim
 map <cr>f :Files!<cr>
@@ -96,8 +88,8 @@ map <cr>d :GitFiles!?<cr>
 map <cr>c :BCommits<cr>
 map <cr>C :Commits<cr>
 map <cr>b :Buffers<cr>
-map <cr>t :Tags<cr>
-map <cr>T :Ag todo<cr>
+map <cr>T :Tags<cr>
+map <cr>a :Ag todo<cr>
 map <cr><cr> :BLines<cr>
 map <cr>l :Lines<cr>
 map <cr>hh :History<cr>
@@ -109,8 +101,7 @@ map <cr>: :Commands<cr>
 let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-\']
 
 map <cr>n :NERDTreeToggle<cr>
-map <cr>v :VimuxOpenRunner<cr>
-map <cr>T :TagbarToggle<cr>
+map <cr>t :TagbarToggle<cr>
 
     " korean
 map ㅗ h
@@ -160,6 +151,11 @@ aug sharp_slashes
     au BufEnter *.{vim,sh,bashrc} map ?? ^xx
 aug end
 
+aug cs_str_interpol
+    au!
+    au BufEnter *.{cs} imap $ $""<c-b>
+aug end
+
 
 " nvim cursorline
 lua << EOF
@@ -180,3 +176,4 @@ EOF
 " vimspector
 
 let g:vimspector_enable_mappings='HUMAN'
+

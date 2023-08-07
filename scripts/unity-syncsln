@@ -1,0 +1,77 @@
+#!/bin/bash
+# unity-syncsln 0.1.0 by rpopic2
+# This script forces compilation and synchronisation of unity solution(csproj files).
+
+# usage
+function usage {
+    cat << EOF
+    Usage : unity-syncsln [<projectPath>[.]] [<unity_version>]
+    Regenerates Unity csproj files at <projectPath>(optional, default at pwd)
+    With Unity version <unity_version>(optional, default with current project version)
+
+    You might want to specify Unity editor parent folder as follows: 
+        export UNITY_EDITOR_PARENT_PATH=<path-to-Editor-folder>"
+        default macOS : /Applications/Unity/Hub/Editor
+EOF
+    exit 1
+}
+if test "$1" == "-h"; then
+    echo "Help :"
+    usage
+fi
+
+# set project path
+PROJPATH="."
+if test -z $1; then
+    PROJPATH="."
+else
+    PROJPATH=$1
+fi
+if test ! -d $PROJPATH; then
+    >&2 echo "Not a path : $PROJPATH"
+    usage
+fi
+
+# get unity version
+if test -z $2; then
+    UNITY_VERSION=$2
+fi
+if test -z $UNITY_VERSION; then
+    UNITY_VERSION=$(cat $PROJPATH/ProjectSettings/ProjectVersion.txt | grep m_EditorVersion: | cut -d' ' -f2)
+fi
+
+# get unity editor parent path
+if test "$(uname)" == "Darwin"; then
+    UNITY_EDITOR_PARENT_PATH=/Applications/Unity/Hub/Editor
+fi
+if test "${UNITY_EDITOR_PARENT_PATH: -1}" == "/"; then
+    UNITY_EDITOR_PARENT_PATH=${UNITY_EDITOR_PARENT_PATH:0:-1}
+fi
+
+DARWIN_EDITOR_PATH=Unity.app/Contents/MacOS/Unity
+
+
+# get editor path
+function test_editor_path {
+    EDITOR_PATH=$UNITY_EDITOR_PARENT_PATH/$UNITY_VERSION/$DARWIN_EDITOR_PATH
+    if test ! -f $EDITOR_PATH; then
+        >&2 echo "Unable to find editor at $EDITOR_PATH."
+        return 1
+    fi
+    echo "Found editor at $EDITOR_PATH"
+    return 0
+}
+test_editor_path
+if test $? -ne 0; then
+    UNITY_VERSION=$UNITY_VERSION"-arm64"
+    echo "searching for -arm64 folders..."
+    test_editor_path
+    if test $? -ne 0; then
+        echo $?
+        usage
+    fi
+fi
+
+# actual work
+$EDITOR_PATH -batchmode -nographics -logFile - -executeMethod UnityEditor.SyncVS.SyncSolution -projectPath $PROJPATH -quit
+echo "Finished with exit status $?"
