@@ -12,20 +12,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'rpopic2/nvim-cursorline'
 Plug 'rpopic2/authentic-gh.vim'
+Plug 'rpopic2/unity.vim'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'puremourning/vimspector'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
+Plug 'ThePrimeagen/harpoon'
 " lang specific
-Plug 'preservim/vim-markdown'
+" Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
 source ~/.config/nvim/plugins/treesitter.lua
 
-" color themes
-" set background=light
-colorscheme gh-light
 
 " coc related settings
 set updatetime=300
@@ -68,7 +69,7 @@ map <space><space> :
 map <space>w :w<cr>
 map <space>t :tabnew<cr>
 map <space>T :tabnew<cr><c-o>
-map <space>q :tabonly<cr>
+map <space>l :tabonly<cr>
 map <space>m :tabmove 
 map <space>v :vsplit<cr>
 map <space>s :split<cr>
@@ -80,6 +81,8 @@ map <c-w>2 :tabmove 2<cr>
 map <c-w>0 :tabmove 0<cr>
 map \l :set bg=light<cr>
 map \d :set bg=dark<cr>
+
+map <cr>\ :colorscheme gh-dark<cr>
 
     "fzf.vim
 map <cr>f :Files!<cr>
@@ -135,8 +138,8 @@ nmap } cs{xkJJ
 vno } Jcs{x
 
 " custom scrolling
-nno zj <c-e>
-nno zk <c-y>
+nno zj <c-e>j
+nno zk <c-y>k
 
 " comments
 aug slashes
@@ -155,7 +158,6 @@ aug cs_str_interpol
     au!
     au BufEnter *.{cs} imap $ $""<c-b>
 aug end
-
 
 " nvim cursorline
 lua << EOF
@@ -176,4 +178,10 @@ EOF
 " vimspector
 
 let g:vimspector_enable_mappings='HUMAN'
+
+colorscheme gh-dark
+
+" harpoon
+map <space>h :lua require("harpoon.ui").toggle_quick_menu()<cr>
+map <cr>h :lua require("harpoon.mark").add_file()<cr>
 

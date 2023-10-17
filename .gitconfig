@@ -19,7 +19,7 @@
 
 [delta]
 	navigate = true    # use n and N to move between diff sections
-	light = true      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 
 [merge]
 	conflictstyle = diff3
@@ -33,6 +33,7 @@
 	colorMoved = default
 [alias]
     a = add
+    ai = add --interactive
     b = branch
     c = commit
     ca = commit -a
@@ -60,3 +61,5 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[push]
+	autoSetupRemote = true
