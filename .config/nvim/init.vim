@@ -27,10 +27,11 @@ call plug#end()
 
 source ~/.config/nvim/plugins/treesitter.lua
 
+map <cr>\ :colorscheme gh-dark<cr>
 
 " coc related settings
 set updatetime=300
-set signcolumn=yes
+"set signcolumn=yes
 set encoding=utf-8
 source ~/.config/nvim/cocinit.vim
 
@@ -38,7 +39,7 @@ source ~/.config/nvim/cocinit.vim
 set statusline+=%w%h%r%q%t%m
 set statusline+=%=%<
 set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
-set statusline+=%y
+set statusline+=%p%P%y
 
 
 " rust related settings
@@ -55,7 +56,6 @@ set tabstop=4 "How many columns of whitespace is a \t char worth
 set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is worth?
 set softtabstop=4 "How many columns of whitespace is a tab keypress of a backspace keypress worth
 set expandtab "You never want to see a \t again in your file, rather tabs keypresses will be expanded into spaces
-set nu
 "shows trailling whitespaces
 set list listchars=trail:·,tab:\ \ 
 imap <c-d> <del>
@@ -82,7 +82,6 @@ map <c-w>0 :tabmove 0<cr>
 map \l :set bg=light<cr>
 map \d :set bg=dark<cr>
 
-map <cr>\ :colorscheme gh-dark<cr>
 
     "fzf.vim
 map <cr>f :Files!<cr>
@@ -178,8 +177,6 @@ EOF
 " vimspector
 
 let g:vimspector_enable_mappings='HUMAN'
-
-colorscheme gh-dark
 
 " harpoon
 map <space>h :lua require("harpoon.ui").toggle_quick_menu()<cr>

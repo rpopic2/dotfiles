@@ -5,11 +5,12 @@
 #	helper = !/usr/bin/gh auth git-credential
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [user]
-	email = rpopic2@gmail.com
+	email = 8055265+rpopic2@users.noreply.github.com
 	name = rpopic2
 [core]
 	editor = nvim
  	pager = delta
+	autocrlf = input
 [init]
 	defaultBranch = main
 [interactive]
@@ -26,7 +27,7 @@
     tool = unityyamlmerge
 [mergetool "unityyamlmerge"]
     trustExitCode = false;
-    cmd = '/Applications/Unity/Hub/Editor/2021.3.2f1-arm64/Unity.app/Contents/Tools/UnityYAMLMerge' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+    cmd = '/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/Tools/UnityYAMLMerge' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
 
 
 [diff]
