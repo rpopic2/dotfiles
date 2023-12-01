@@ -4,6 +4,11 @@
           "command": "~/.dotnet/tools/csharp-ls",
           "filetypes": ["cs"],
           "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
+        },
+        "glsl": {
+          "command": "~/scripts/glsl_analyzer",
+          "filetypes": ["glsl"],
+          "rootPatterns": [".vim/", ".git/"]
         }
     },
     "snippets.ultisnips.pythonPrompt": false,

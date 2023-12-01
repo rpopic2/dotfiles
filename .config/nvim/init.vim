@@ -27,11 +27,14 @@ call plug#end()
 
 source ~/.config/nvim/plugins/treesitter.lua
 
+colorscheme gh-dark
 map <cr>\ :colorscheme gh-dark<cr>
+set colorcolumn=81
+hi ColorColumn ctermfg=Red ctermbg=none
 
 " coc related settings
 set updatetime=300
-"set signcolumn=yes
+set signcolumn=yes
 set encoding=utf-8
 source ~/.config/nvim/cocinit.vim
 
@@ -39,7 +42,7 @@ source ~/.config/nvim/cocinit.vim
 set statusline+=%w%h%r%q%t%m
 set statusline+=%=%<
 set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
-set statusline+=%p%P%y
+set statusline+=[%l,%P]%y
 
 
 " rust related settings
@@ -81,10 +84,12 @@ map <c-w>2 :tabmove 2<cr>
 map <c-w>0 :tabmove 0<cr>
 map \l :set bg=light<cr>
 map \d :set bg=dark<cr>
+map <space>x :te<cr>i
+map <c-k> :Man<cr>
 
 
     "fzf.vim
-map <cr>f :Files!<cr>
+map <space>f :Files!<cr>
 map <cr>g :GitFiles!<cr>
 map <cr>d :GitFiles!?<cr>
 map <cr>c :BCommits<cr>
@@ -155,7 +160,7 @@ aug end
 
 aug cs_str_interpol
     au!
-    au BufEnter *.{cs} imap $ $""<c-b>
+    " au BufEnter *.{cs} imap $ $""<c-b>
 aug end
 
 " nvim cursorline

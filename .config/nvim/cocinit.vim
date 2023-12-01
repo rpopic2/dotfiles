@@ -106,11 +106,11 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocFzfListResume<CR>
 nmap <space>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <space>f  <Plug>(coc-format-selected)
-nmap <space>f  <Plug>(coc-format-selected)
+xmap gq  <Plug>(coc-format-selected)
+nmap gq  <Plug>(coc-format-selected)
 aug rustfmt
     au!
-    au BufEnter *.rs map <space>f :RustFmt<cr>
+    au BufEnter *.rs map gq :RustFmt<cr>
 aug end
 
 " Applying codeAction to the selected region.
