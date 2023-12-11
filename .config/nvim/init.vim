@@ -1,12 +1,7 @@
-if exists('g:vscode') 
-    finish
-endif
 " plugins
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'antoinemadec/coc-fzf'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -16,19 +11,20 @@ Plug 'rpopic2/unity.vim'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'puremourning/vimspector'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
-Plug 'ThePrimeagen/harpoon'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'ThePrimeagen/harpoon'
 " lang specific
 " Plug 'preservim/vim-markdown'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
-source ~/.config/nvim/plugins/treesitter.lua
+" source ~/.config/nvim/plugins/treesitter.lua
+source ~/.config/nvim/lsp.lua
+hi @lsp.type.struct.cs ctermfg=Blue
 
-colorscheme gh-dark
-map <cr>\ :colorscheme gh-dark<cr>
+colorscheme gh-light
+map <cr>\ :colorscheme gh-light<cr>
 set colorcolumn=81
 hi ColorColumn ctermfg=Red ctermbg=none
 
@@ -36,18 +32,13 @@ hi ColorColumn ctermfg=Red ctermbg=none
 set updatetime=300
 set signcolumn=yes
 set encoding=utf-8
-source ~/.config/nvim/cocinit.vim
+" source ~/.config/nvim/cocinit.vim
 
 " status line
-set statusline+=%w%h%r%q%t%m
+set statusline=%w%h%r%q%t%m
 set statusline+=%=%<
-set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
 set statusline+=[%l,%P]%y
-
-
-" rust related settings
-" syntax enable
-" filetype plugin indent on
 
 " general setings
 set mouse=a
@@ -62,8 +53,7 @@ set expandtab "You never want to see a \t again in your file, rather tabs keypre
 "shows trailling whitespaces
 set list listchars=trail:·,tab:\ \ 
 imap <c-d> <del>
-
-
+set completeopt=menu,longest
 
 " key bindings
 
@@ -73,19 +63,16 @@ map <space>w :w<cr>
 map <space>t :tabnew<cr>
 map <space>T :tabnew<cr><c-o>
 map <space>l :tabonly<cr>
+map <space>x :te<cr>i
 map <space>m :tabmove 
-map <space>v :vsplit<cr>
-map <space>s :split<cr>
-map <space>/ :noh<cr>
-map <space>r :registers<cr>
-ino <c-u> <c-o>d^<del>
+map <space>g :G 
 map <c-w>1 :tabmove 1<cr>
 map <c-w>2 :tabmove 2<cr>
 map <c-w>0 :tabmove 0<cr>
 map \l :set bg=light<cr>
 map \d :set bg=dark<cr>
-map <space>x :te<cr>i
 map <c-k> :Man<cr>
+map gD :tabnew<cr><c-o><c-]>
 
 
     "fzf.vim
@@ -123,16 +110,8 @@ map ㅑ i
     "rc's
 map \rc :e $MYVIMRC<cr>
 map \rcc :e ~/.config/nvim/cocinit.vim<cr>
+map \rcl :e ~/.config/nvim/lsp.lua<cr>
 map \rcg :e ~/.config/nvim/ginit.vim<cr>
-
-map <space>g :G<space>
-
-" copilot
-"imap <silent><script><expr> <c-j> copilot#Accept("\<CR>")
-"let g:copilot_no_tab_map = v:true
-" c-] to dismiss
-" M-] to next, M-[ to prev
-
 
 " parantheses matching
 ino {<cr> <c-g>u{<cr>}<esc>O
@@ -158,10 +137,6 @@ aug sharp_slashes
     au BufEnter *.{vim,sh,bashrc} map ?? ^xx
 aug end
 
-aug cs_str_interpol
-    au!
-    " au BufEnter *.{cs} imap $ $""<c-b>
-aug end
 
 " nvim cursorline
 lua << EOF
