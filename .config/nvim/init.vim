@@ -16,7 +16,7 @@ Plug 'puremourning/vimspector'
 " Plug 'ThePrimeagen/harpoon'
 " lang specific
 " Plug 'preservim/vim-markdown'
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " source ~/.config/nvim/plugins/treesitter.lua
@@ -73,6 +73,7 @@ map \l :set bg=light<cr>
 map \d :set bg=dark<cr>
 map <c-k> :Man<cr>
 map gD :tabnew<cr><c-o><c-]>
+tmap <c-\> <c-\><c-n>
 
 
     "fzf.vim
