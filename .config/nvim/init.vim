@@ -24,7 +24,7 @@ source ~/.config/nvim/lsp.lua
 hi @lsp.type.struct.cs ctermfg=Blue
 
 colorscheme gh-light
-map <cr>\ :colorscheme gh-light<cr>
+map \\ :colorscheme gh-light<cr>
 set colorcolumn=81
 hi ColorColumn ctermfg=Red ctermbg=none
 
@@ -62,41 +62,49 @@ map <space><space> :
 map <space>w :w<cr>
 map <space>t :tabnew<cr>
 map <space>T :tabnew<cr><c-o>
-map <space>l :tabonly<cr>
+map <space>o :tabonly<cr>
 map <space>x :te<cr>i
 map <space>m :tabmove 
+map <space>> 9<c-w>>
+map <space>< 9<c-w><
+map <space>q <c-w>w<c-w>q
 map <space>g :G 
+map <space>j :cn<cr>
+map <space>k :cN<cr>
+map <space>h :ln<cr>
 map <c-w>1 :tabmove 1<cr>
 map <c-w>2 :tabmove 2<cr>
 map <c-w>0 :tabmove 0<cr>
+map <c-w><space> <c-w>L12<c-w><
 map \l :set bg=light<cr>
 map \d :set bg=dark<cr>
 map <c-k> :Man<cr>
 map gD :tabnew<cr><c-o><c-]>
 tmap <c-\> <c-\><c-n>
+map _ "_
 
 
     "fzf.vim
-map <space>f :Files!<cr>
-map <cr>g :GitFiles!<cr>
-map <cr>d :GitFiles!?<cr>
-map <cr>c :BCommits<cr>
-map <cr>C :Commits<cr>
-map <cr>b :Buffers<cr>
-map <cr>T :Tags<cr>
-map <cr>a :Ag todo<cr>
-map <cr><cr> :BLines<cr>
-map <cr>l :Lines<cr>
-map <cr>hh :History<cr>
-map <cr>h/ :History/<cr>
-map <cr>h: :History:<cr>
-map <cr>H :Hel!<cr>
-map <cr>m :Marks<cr>
-map <cr>: :Commands<cr>
+map \f :Files!<cr>
+map <space>f :GitFiles!<cr>
+map \d :GitFiles!?<cr>
+map \c :BCommits<cr>
+map \C :Commits<cr>
+map \b :Buffers<cr>
+map \T :Tags<cr>
+map \a :Ag todo<cr>
+map \<cr> :BLines<cr>
+map \l :Lines<cr>
+map \hh :History<cr>
+map \h/ :History/<cr>
+map \h: :History:<cr>
+map \H :Hel!<cr>
+map \m :Marks<cr>
+map \: :Commands<cr>
 let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-\']
 
-map <cr>n :NERDTreeToggle<cr>
-map <cr>t :TagbarToggle<cr>
+map \n :NERDTreeToggle<cr>
+map \t :TagbarToggle<cr>
 
     " korean
 map ㅗ h
@@ -117,9 +125,9 @@ map \rcg :e ~/.config/nvim/ginit.vim<cr>
 " parantheses matching
 ino {<cr> <c-g>u{<cr>}<esc>O
 ino {<s-cr> <c-g>u{<cr>}<esc>O
-nor { s<cr>{<cr><esc>o}<esc>
-nmap } cs{xkJJ
-vno } Jcs{x
+" nor { s<cr>{<cr><esc>o}<esc>
+" nmap } cs{xkJJ
+" vno } Jcs{x
 
 " custom scrolling
 nno zj <c-e>j
@@ -128,14 +136,14 @@ nno zk <c-y>k
 " comments
 aug slashes
     au!
-    au BufEnter *.{cpp,c,cs,rs} map // ^i// <esc>
-    au BufEnter *.{cpp,c,cs,rs} map ?? ^xxx
+    au BufEnter *.{cpp,c,cs,rs} map <space>/ ^i// <esc>
+    au BufEnter *.{cpp,c,cs,rs} map <space>? ^xxx
     au FileType cs setlocal commentstring=//%s
 aug end
 aug sharp_slashes
     au!
-    au BufEnter *.{vim,sh,bashrc} map // ^i# <esc>
-    au BufEnter *.{vim,sh,bashrc} map ?? ^xx
+    au BufEnter *.{sh,bashrc} map <space>/ ^i# <esc>
+    au BufEnter *.{sh,bashrc} map <space>? ^xx
 aug end
 
 
@@ -160,6 +168,6 @@ EOF
 let g:vimspector_enable_mappings='HUMAN'
 
 " harpoon
-map <space>h :lua require("harpoon.ui").toggle_quick_menu()<cr>
-map <cr>h :lua require("harpoon.mark").add_file()<cr>
+" map <space>h :lua require("harpoon.ui").toggle_quick_menu()<cr>
+" map <cr>h :lua require("harpoon.mark").add_file()<cr>
 
