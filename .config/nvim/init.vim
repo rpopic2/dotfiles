@@ -67,7 +67,7 @@ map <space>x :te<cr>i
 map <space>m :tabmove 
 map <space>> 9<c-w>>
 map <space>< 9<c-w><
-map <space>q <c-w>w<c-w>q
+map <space>q <c-w><c-w><c-w>q
 map <space>g :G 
 map <space>j :cn<cr>
 map <space>k :cN<cr>
@@ -76,6 +76,8 @@ map <c-w>1 :tabmove 1<cr>
 map <c-w>2 :tabmove 2<cr>
 map <c-w>0 :tabmove 0<cr>
 map <c-w><space> <c-w>L12<c-w><
+map <c-.> <c-w>>
+map <c-,> <c-w><
 map \l :set bg=light<cr>
 map \d :set bg=dark<cr>
 map <c-k> :Man<cr>
@@ -85,14 +87,14 @@ map _ "_
 
 
     "fzf.vim
-map \f :Files!<cr>
+map <space>F :Files!<cr>
 map <space>f :GitFiles!<cr>
 map \d :GitFiles!?<cr>
 map \c :BCommits<cr>
 map \C :Commits<cr>
-map \b :Buffers<cr>
-map \T :Tags<cr>
-map \a :Ag todo<cr>
+map <space>b :Buffers!<cr>
+map \A :Ag! todo<cr>
+map \a :Ag! 
 map \<cr> :BLines<cr>
 map \l :Lines<cr>
 map \hh :History<cr>
