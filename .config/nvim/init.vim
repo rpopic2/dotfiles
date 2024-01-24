@@ -5,15 +5,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'rpopic2/nvim-cursorline'
 Plug 'rpopic2/authentic-gh.vim'
 Plug 'rpopic2/unity.vim'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'puremourning/vimspector'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'ThePrimeagen/harpoon'
+" Plug 'nvim-lua/plenary.nvim' Plug 'ThePrimeagen/harpoon'
 " lang specific
 " Plug 'preservim/vim-markdown'
 " Plug 'rust-lang/rust.vim'
@@ -21,12 +19,15 @@ call plug#end()
 
 " source ~/.config/nvim/plugins/treesitter.lua
 source ~/.config/nvim/lsp.lua
-hi @lsp.type.struct.cs ctermfg=Blue
 
 colorscheme gh-light
-map \\ :colorscheme gh-light<cr>
 set colorcolumn=81
 hi ColorColumn ctermfg=Red ctermbg=none
+hi @lsp.type.struct.cs ctermfg=Blue
+hi gitcommitBlank ctermbg=None
+hi diffRemoved ctermfg=Grey ctermbg=lightred
+hi diffAdded ctermbg=LightGreen
+hi Search ctermbg=LightYellow
 
 " coc related settings
 set updatetime=300
@@ -61,7 +62,7 @@ set completeopt=menu,longest
 map <space><space> :
 map <space>w :w<cr>
 map <space>t :tabnew<cr>
-map <space>T :tabnew<cr><c-o>
+map <space>T gT:tabnew<cr>
 map <space>o :tabonly<cr>
 map <space>x :te<cr>i
 map <space>m :tabmove 
@@ -82,13 +83,33 @@ map \l :set bg=light<cr>
 map \d :set bg=dark<cr>
 map <c-k> :Man<cr>
 map gD :tabnew<cr><c-o><c-]>
+" map gr gR<cr><space>q
 tmap <c-\> <c-\><c-n>
 map _ "_
 
+map <up> <c-y>k
+map <down> <c-e>j
+imap <c-l> <c-x><c-o>
 
-    "fzf.vim
-map <space>F :Files!<cr>
-map <space>f :GitFiles!<cr>
+"fzf.vim
+
+let pred = ''
+aug fzf_files
+    au!
+    au BufEnter *.* let pred = "-name \'*." . expand('%:e') . "\'"
+aug end
+
+map <space>c :call fzf#run({'source': 'find . ' . pred, 'sink': 'e'})<cr>
+map <space>C :call fzf#run({'source': 'find .', 'sink': 'e'})<cr>
+map <space>i :call fzf#run({'source': clist, 'sink': 'e'})<cr>
+
+call system("test -d Assets")
+if v:shell_error == 0
+    map <space>c :call fzf#run({'source': 'find Assets -name *.cs', 'sink': 'e'})<cr>
+endif
+
+map <space>f :Files!<cr>
+map <space>F :GitFiles!<cr>
 map \d :GitFiles!?<cr>
 map \c :BCommits<cr>
 map \C :Commits<cr>
@@ -107,6 +128,12 @@ let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-\']
 
 map \n :NERDTreeToggle<cr>
 map \t :TagbarToggle<cr>
+
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <C-D> <Del>
+set cedit=\<c-v>
 
     " korean
 map ㅗ h
@@ -141,29 +168,35 @@ aug slashes
     au BufEnter *.{cpp,c,cs,rs} map <space>/ ^i// <esc>
     au BufEnter *.{cpp,c,cs,rs} map <space>? ^xxx
     au FileType cs setlocal commentstring=//%s
+    au FileType cpp setlocal commentstring=//%s
 aug end
 aug sharp_slashes
     au!
     au BufEnter *.{sh,bashrc} map <space>/ ^i# <esc>
     au BufEnter *.{sh,bashrc} map <space>? ^xx
 aug end
+aug asm_comments
+    au!
+    au BufEnter asm map <space>/ ^i; <esc>
+    au BufEnter asm map <space>? ^xx
+aug end
 
 
 " nvim cursorline
-lua << EOF
-require('nvim-cursorline').setup {
-  cursorline = {
-    enable = false,
-    timeout = 0,
-    number = true,
-  },
-  cursorword = {
-    enable = true,
-    min_length = 1,
-    hl = { ctermbg = Black },
-  }
-}
-EOF
+" lua << EOF
+" require('nvim-cursorline').setup {
+"   cursorline = {
+"     enable = false,
+"     timeout = 0,
+"     number = true,
+"   },
+"   cursorword = {
+"     enable = true,
+"     min_length = 1,
+"     hl = { ctermbg = Black },
+"   }
+" }
+" EOF
 
 " vimspector
 

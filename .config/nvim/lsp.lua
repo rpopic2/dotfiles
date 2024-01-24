@@ -59,7 +59,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, opts)
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<space>a', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', 'gR', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references(nil, {on_list=olfn}) end)
         vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
         vim.keymap.set('n', '(', vim.diagnostic.goto_prev)
         vim.keymap.set('n', ')', vim.diagnostic.goto_next)
@@ -67,4 +68,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<space>d', vim.diagnostic.setqflist)
     end,
 })
+
+function olfn(options)
+    vim.fn.setqflist({}, ' ', options)
+    vim.cmd("cfirst")
+    vim.cmd("norm zz")
+end
 
