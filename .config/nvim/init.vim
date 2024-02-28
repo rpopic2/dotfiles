@@ -6,15 +6,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'rpopic2/authentic-gh.vim'
-Plug 'rpopic2/unity.vim'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdtree'
-Plug 'puremourning/vimspector'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'nvim-lua/plenary.nvim' Plug 'ThePrimeagen/harpoon'
-" lang specific
-" Plug 'preservim/vim-markdown'
-" Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " source ~/.config/nvim/plugins/treesitter.lua
@@ -27,6 +20,8 @@ hi @lsp.type.struct.cs ctermfg=Blue
 hi gitcommitBlank ctermbg=None
 hi diffRemoved ctermfg=Grey ctermbg=lightred
 hi diffAdded ctermbg=LightGreen
+hi diffFile ctermfg=Cyan
+
 hi Search ctermbg=LightYellow
 
 " coc related settings
@@ -69,9 +64,10 @@ map <space>m :tabmove
 map <space>> 9<c-w>>
 map <space>< 9<c-w><
 map <space>q <c-w><c-w><c-w>q
+map <space>p :bd<cr>
 map <space>g :G 
-map <space>j :cn<cr>
-map <space>k :cN<cr>
+map <space>j :cn<cr>zz
+map <space>k :cN<cr>zz
 map <space>h :ln<cr>
 map <c-w>1 :tabmove 1<cr>
 map <c-w>2 :tabmove 2<cr>
@@ -86,6 +82,7 @@ map gD :tabnew<cr><c-o><c-]>
 " map gr gR<cr><space>q
 tmap <c-\> <c-\><c-n>
 map _ "_
+map <c-]> <c-]>z<cr>
 
 map <up> <c-y>k
 map <down> <c-e>j
@@ -101,7 +98,6 @@ aug end
 
 map <space>c :call fzf#run({'source': 'find . ' . pred, 'sink': 'e'})<cr>
 map <space>C :call fzf#run({'source': 'find .', 'sink': 'e'})<cr>
-map <space>i :call fzf#run({'source': clist, 'sink': 'e'})<cr>
 
 call system("test -d Assets")
 if v:shell_error == 0
@@ -180,29 +176,4 @@ aug asm_comments
     au BufEnter asm map <space>/ ^i; <esc>
     au BufEnter asm map <space>? ^xx
 aug end
-
-
-" nvim cursorline
-" lua << EOF
-" require('nvim-cursorline').setup {
-"   cursorline = {
-"     enable = false,
-"     timeout = 0,
-"     number = true,
-"   },
-"   cursorword = {
-"     enable = true,
-"     min_length = 1,
-"     hl = { ctermbg = Black },
-"   }
-" }
-" EOF
-
-" vimspector
-
-let g:vimspector_enable_mappings='HUMAN'
-
-" harpoon
-" map <space>h :lua require("harpoon.ui").toggle_quick_menu()<cr>
-" map <cr>h :lua require("harpoon.mark").add_file()<cr>
 

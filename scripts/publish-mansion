@@ -1,6 +1,8 @@
 #!/bin/bash
 
 dotnet publish -r linux-x64 -c Release ~/mansion/mansion/ --self-contained true
+PUB_PATH=~/mansion/mansion/bin/Release/net8.0/linux-x64/publish/mansion
+echo Uploading $PUB_PATH
 if test $? -eq 0; then
-    scp -i ~/.ssh/mansion_key.pem ~/mansion/mansion/bin/Release/net7.0/linux-x64/publish/mansion rpopic2@20.106.237.226:/home/rpopic2
+    scp -i ~/.ssh/mansion_key.pem $PUB_PATH rpopic2@20.106.237.226:/home/rpopic2
 fi
