@@ -64,7 +64,7 @@ map <space>m :tabmove
 map <space>> 9<c-w>>
 map <space>< 9<c-w><
 map <space>q <c-w><c-w><c-w>q
-map <space>p :bd<cr>
+map \p :bd<cr>
 map <space>g :G 
 map <space>j :cn<cr>zz
 map <space>k :cN<cr>zz
@@ -75,8 +75,6 @@ map <c-w>0 :tabmove 0<cr>
 map <c-w><space> <c-w>L12<c-w><
 map <c-.> <c-w>>
 map <c-,> <c-w><
-map \l :set bg=light<cr>
-map \d :set bg=dark<cr>
 map <c-k> :Man<cr>
 map gD :tabnew<cr><c-o><c-]>
 " map gr gR<cr><space>q
@@ -106,7 +104,8 @@ endif
 
 map <space>f :Files!<cr>
 map <space>F :GitFiles!<cr>
-map \d :GitFiles!?<cr>
+map \g :GitFiles!?<cr>
+map \d :G diff HEAD~
 map \c :BCommits<cr>
 map \C :Commits<cr>
 map <space>b :Buffers!<cr>
