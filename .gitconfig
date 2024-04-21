@@ -1,8 +1,6 @@
 [credential "https://github.com"]
-#	helper = !/usr/bin/gh auth git-credential
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-#	helper = !/usr/bin/gh auth git-credential
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [user]
 	email = 8055265+rpopic2@users.noreply.github.com
@@ -29,7 +27,6 @@
     trustExitCode = false;
     cmd = '/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/Tools/UnityYAMLMerge' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
 
-
 [diff]
 	colorMoved = default
 [alias]
@@ -44,16 +41,9 @@
     s = status
     sw = switch
     m = merge
-    p = push
     pu = push
     pl = pull
     re = restore
-    res = restore --staged
-    r = reset
-    rs = reset --soft
-    rh = reset --hard
-    rsh = reset --soft HEAD~1
-    rhh = reset --hard HEAD~1
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
 	supdate = submodule update --remote --merge
@@ -64,3 +54,4 @@
 	clean = git-lfs clean -- %f
 [push]
 	autoSetupRemote = true
+

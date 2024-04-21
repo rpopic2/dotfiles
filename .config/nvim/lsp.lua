@@ -12,7 +12,7 @@ api.nvim_create_autocmd("BufEnter", {
         vim.lsp.start({
             name = 'csharp',
             cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
-            root_dir = vim.fs.dirname(vim.fs.find({ "*.csproj", ".git" }, { upward = true })[1])
+            root_dir = vim.fs.dirname(vim.fs.find({ "*.csproj" }, { upward = true })[1])
         })
     end,
 })
