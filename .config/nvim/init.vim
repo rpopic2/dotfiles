@@ -8,12 +8,14 @@ Plug 'tpope/vim-commentary'
 Plug 'rpopic2/authentic-gh.vim'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdtree'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 " source ~/.config/nvim/plugins/treesitter.lua
 source ~/.config/nvim/lsp.lua
 
 colorscheme gh-light
+set notermguicolors
 set colorcolumn=81
 hi ColorColumn ctermfg=Red ctermbg=none
 hi @lsp.type.struct.cs ctermfg=Blue
@@ -128,6 +130,8 @@ cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
 cnoremap <C-D> <Del>
+cmap <C-=> <Up>
+cmap <C--> <Down>
 set cedit=\<c-v>
 
     " korean

@@ -3,19 +3,9 @@
 local api = vim.api
 
 -- csharp
-local aug_csharp_lsp = api.nvim_create_augroup("csharp_lsp", { clear = true })
-
-api.nvim_create_autocmd("BufEnter", {
-    group = aug_csharp_lsp,
-    pattern = "*.cs",
-    callback = function()
-        vim.lsp.start({
-            name = 'csharp',
-            cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
-            root_dir = vim.fs.dirname(vim.fs.find({ "*.csproj" }, { upward = true })[1])
-        })
-    end,
-})
+require'lspconfig'.csharp_ls.setup {
+    cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
+}
 
 -- cpp
 local aug_cpp_lsp = api.nvim_create_augroup("aug_cpp_lsp", { clear = true })
