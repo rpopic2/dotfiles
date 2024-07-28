@@ -3,8 +3,10 @@
 local api = vim.api
 
 -- csharp
+local util = require'lspconfig'.util
 require'lspconfig'.csharp_ls.setup {
     cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
+    root_dir = util.find_git_ancestor
 }
 
 -- cpp
@@ -56,6 +58,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', ')', vim.diagnostic.goto_next)
         vim.keymap.set('n', '<space>l', vim.diagnostic.setloclist)
         vim.keymap.set('n', '<space>d', vim.diagnostic.setqflist)
+        client.server_capabilities.semanticTokensProvider = nil
     end,
 })
 

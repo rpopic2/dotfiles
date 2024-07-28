@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd ~/mansion/mansion
-dotnet run
+cd ~/mansion
+dotnet run --project mansion/mansion.csproj -- $1

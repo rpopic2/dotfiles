@@ -14,15 +14,18 @@ call plug#end()
 " source ~/.config/nvim/plugins/treesitter.lua
 source ~/.config/nvim/lsp.lua
 
-colorscheme gh-light
 set notermguicolors
+colorscheme gh-light
 set colorcolumn=81
-hi ColorColumn ctermfg=Red ctermbg=none
-hi @lsp.type.struct.cs ctermfg=Blue
-hi gitcommitBlank ctermbg=None
-hi diffRemoved ctermfg=Grey ctermbg=lightred
-hi diffAdded ctermbg=LightGreen
-hi diffFile ctermfg=Cyan
+aug his
+    au!
+    au ColorScheme hi gitcommitBlank ctermbg=None
+    hi ColorColumn ctermfg=White ctermbg=none
+    hi @lsp.type.struct.cs ctermfg=Blue
+    hi diffRemoved ctermfg=Grey ctermbg=lightred
+    hi diffAdded ctermbg=LightGreen
+    hi diffFile ctermfg=Cyan
+aug end
 
 hi Search ctermbg=LightYellow
 
@@ -43,6 +46,7 @@ set mouse=a
 set clipboard+=unnamedplus
 set timeoutlen=500
 let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
 " tab settings
 set tabstop=4 "How many columns of whitespace is a \t char worth
 set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is worth?
@@ -51,6 +55,7 @@ set expandtab "You never want to see a \t again in your file, rather tabs keypre
 "shows trailling whitespaces
 set list listchars=trail:·,tab:\ \ 
 imap <c-d> <del>
+imap ` <c-x><c-o>
 set completeopt=menu,longest
 
 " key bindings
@@ -82,11 +87,9 @@ map gD :tabnew<cr><c-o><c-]>
 " map gr gR<cr><space>q
 tmap <c-\> <c-\><c-n>
 map _ "_
-map <c-]> <c-]>z<cr>
 
 map <up> <c-y>k
 map <down> <c-e>j
-imap <c-l> <c-x><c-o>
 
 "fzf.vim
 

@@ -125,3 +125,4 @@ fi
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+export PATH="/Users/rpopic2/go/bin:$PATH"
