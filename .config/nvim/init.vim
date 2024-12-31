@@ -25,6 +25,7 @@ aug his
     hi diffRemoved ctermfg=Grey ctermbg=lightred
     hi diffAdded ctermbg=LightGreen
     hi diffFile ctermfg=Cyan
+    hi csPreProcPragma ctermfg=Grey
 aug end
 
 hi Search ctermbg=LightYellow
@@ -56,6 +57,7 @@ set expandtab "You never want to see a \t again in your file, rather tabs keypre
 set list listchars=trail:·,tab:\ \ 
 imap <c-d> <del>
 imap ` <c-x><c-o>
+imap <c-b> <left>
 set completeopt=menu,longest
 
 " key bindings
@@ -71,7 +73,6 @@ map <space>m :tabmove
 map <space>> 9<c-w>>
 map <space>< 9<c-w><
 map <space>q <c-w><c-w><c-w>q
-map \p :bd<cr>
 map <space>g :G 
 map <space>j :cn<cr>zz
 map <space>k :cN<cr>zz
@@ -145,6 +146,7 @@ map ㅣ l
 map ㅐ o
 map ㅒ O
 map ㅑ i
+map ㅁ a
 
 
     "rc's
@@ -167,19 +169,15 @@ nno zk <c-y>k
 " comments
 aug slashes
     au!
-    au BufEnter *.{cpp,c,cs,rs} map <space>/ ^i// <esc>
-    au BufEnter *.{cpp,c,cs,rs} map <space>? ^xxx
+    au BufEnter *.{cpp,c,cs,rs,s} map <space>/ ^i// <esc>
+    au BufEnter *.{cpp,c,cs,rs,s} map <space>? ^xxx
     au FileType cs setlocal commentstring=//%s
     au FileType cpp setlocal commentstring=//%s
+    au FileType asm setlocal commentstring=//%s
 aug end
 aug sharp_slashes
     au!
     au BufEnter *.{sh,bashrc} map <space>/ ^i# <esc>
     au BufEnter *.{sh,bashrc} map <space>? ^xx
-aug end
-aug asm_comments
-    au!
-    au BufEnter asm map <space>/ ^i; <esc>
-    au BufEnter asm map <space>? ^xx
 aug end
 

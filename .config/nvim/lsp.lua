@@ -37,6 +37,20 @@ api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+-- zig
+local aug_cpp_lsp = api.nvim_create_augroup("aug_zig_lsp", { clear = true })
+api.nvim_create_autocmd("BufEnter", {
+    group = aug_cpp_lsp,
+    pattern = { "*.zig" },
+    callback = function()
+        vim.lsp.start({
+            name = 'zls',
+            cmd = {'zls'},
+            root_dir = vim.fs.dirname(vim.fs.find({ "build.zig", ".git" }, { upward = true })[1])
+        })
+    end,
+})
+
 -- aug lsp
 local aug_lsp = api.nvim_create_augroup("aug_lsp", { clear = true })
 
