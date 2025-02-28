@@ -1,12 +1,10 @@
--- csharp lsp config
-
 local api = vim.api
 
 -- csharp
 local util = require'lspconfig'.util
 require'lspconfig'.csharp_ls.setup {
     cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
-    root_dir = util.find_git_ancestor
+    root_dir = vim.fs.dirname(vim.fs.find({ "*.csproj" }, { upward = true })[1])
 }
 
 -- cpp

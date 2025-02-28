@@ -7,28 +7,33 @@
 	name = rpopic2
 [core]
 	editor = nvim
- 	pager = delta
 	autocrlf = input
+    pager = less -r
 [init]
 	defaultBranch = main
-[interactive]
-	diffFilter = delta --color-only
 [add.interactive]
 	useBuiltin = false # required for git 2.37.0
-
-[delta]
-	navigate = true    # use n and N to move between diff sections
-	light = true      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 
 [merge]
 	conflictstyle = diff3
     tool = unityyamlmerge
 [mergetool "unityyamlmerge"]
     trustExitCode = false;
-    cmd = '/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/Tools/UnityYAMLMerge' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+    cmd = '/Applications/Unity/Hub/Editor/2022.3.49f1/Unity.app/Contents/Tools/UnityYAMLMerge' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
 
 [diff]
-	colorMoved = default
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+
+[fetch]
+    prune = true
+    pruneTags = true
+
+[commit]
+    verbose = true
+
 [alias]
     a = add
     ai = add --interactive
@@ -40,7 +45,6 @@
     l = log
     s = status
     sw = switch
-    m = merge
     pu = push
     pl = pull
     re = restore

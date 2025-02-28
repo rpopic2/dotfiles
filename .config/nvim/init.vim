@@ -7,7 +7,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'rpopic2/authentic-gh.vim'
 Plug 'preservim/tagbar'
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
@@ -56,7 +56,6 @@ set expandtab "You never want to see a \t again in your file, rather tabs keypre
 "shows trailling whitespaces
 set list listchars=trail:·,tab:\ \ 
 imap <c-d> <del>
-imap ` <c-x><c-o>
 imap <c-b> <left>
 set completeopt=menu,longest
 
@@ -73,7 +72,7 @@ map <space>m :tabmove
 map <space>> 9<c-w>>
 map <space>< 9<c-w><
 map <space>q <c-w><c-w><c-w>q
-map <space>g :G 
+map <space>g :tab G 
 map <space>j :cn<cr>zz
 map <space>k :cN<cr>zz
 map <space>h :ln<cr>
@@ -100,12 +99,12 @@ aug fzf_files
     au BufEnter *.* let pred = "-name \'*." . expand('%:e') . "\'"
 aug end
 
-map <space>c :call fzf#run({'source': 'find . ' . pred, 'sink': 'e'})<cr>
-map <space>C :call fzf#run({'source': 'find .', 'sink': 'e'})<cr>
+map <space>c :call fzf#run({'source': 'find . ' . pred, 'sink': 'tabedit'})<cr>
+map <space>e :call fzf#run({'source': 'find .', 'sink': 'e'})<cr>
 
 call system("test -d Assets")
 if v:shell_error == 0
-    map <space>c :call fzf#run({'source': 'find Assets -name *.cs', 'sink': 'e'})<cr>
+    map <space>c :call fzf#run({'source': 'find Assets -name *.cs', 'sink': 'tabedit'})<cr>
 endif
 
 map <space>f :Files!<cr>
@@ -147,6 +146,7 @@ map ㅐ o
 map ㅒ O
 map ㅑ i
 map ㅁ a
+map ㄱ r
 
 
     "rc's
@@ -172,6 +172,7 @@ aug slashes
     au BufEnter *.{cpp,c,cs,rs,s} map <space>/ ^i// <esc>
     au BufEnter *.{cpp,c,cs,rs,s} map <space>? ^xxx
     au FileType cs setlocal commentstring=//%s
+    au FileType al setlocal commentstring=//%s
     au FileType cpp setlocal commentstring=//%s
     au FileType asm setlocal commentstring=//%s
 aug end

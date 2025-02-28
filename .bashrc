@@ -122,7 +122,7 @@ fi
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 export PATH="/Users/rpopic2/go/bin:$PATH"
-export PATH=/opt/homebrew/opt/curl/bin:$PATH:~/.local/bin/bat:~/scripts
+export PATH=/opt/homebrew/opt/curl/bin:$PATH:~/.local/bin:~/scripts
 export PATH="/Users/rpopic2/.gem/ruby/3.3.0/bin:$PATH"
 export PATH="/Users/rpopic2/.gem/ruby/2.6.0/bin:$PATH"
 export GEM_HOME=$HOME/.gem
@@ -153,5 +153,5 @@ complete -f -F _dotnet_bash_complete dotnet
 
 # platform secific localbashrc
 . ~/.git-completion.bash
-export FrameworkPathOverride=/lib/mono/4.7.2-api
+export FrameworkPathOverride=/opt/homebrew/lib/mono/4.7.2-api
 
