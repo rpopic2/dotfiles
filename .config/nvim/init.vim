@@ -4,23 +4,21 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
 Plug 'rpopic2/authentic-gh.vim'
 Plug 'preservim/tagbar'
-" Plug 'preservim/nerdtree'
-Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 " source ~/.config/nvim/plugins/treesitter.lua
 source ~/.config/nvim/lsp.lua
+
 
 set notermguicolors
 colorscheme gh-light
 set colorcolumn=81
 aug his
     au!
-    au ColorScheme hi gitcommitBlank ctermbg=None
-    hi ColorColumn ctermfg=White ctermbg=none
+    au BufEnter *.al set filetype=al
+    au ColorScheme hi gitcommitBlank ctermbg=None hi ColorColumn ctermfg=White ctermbg=none
     hi @lsp.type.struct.cs ctermfg=Blue
     hi diffRemoved ctermfg=Grey ctermbg=lightred
     hi diffAdded ctermbg=LightGreen
@@ -30,11 +28,10 @@ aug end
 
 hi Search ctermbg=LightYellow
 
-" coc related settings
 set updatetime=300
 set signcolumn=yes
 set encoding=utf-8
-" source ~/.config/nvim/cocinit.vim
+set winborder=single
 
 " status line
 set statusline=%w%h%r%q%t%m
@@ -48,23 +45,31 @@ set clipboard+=unnamedplus
 set timeoutlen=500
 let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
+
 " tab settings
 set tabstop=4 "How many columns of whitespace is a \t char worth
 set shiftwidth=4 "How many columns of whitespace a 'level of indentation' is worth?
 set softtabstop=4 "How many columns of whitespace is a tab keypress of a backspace keypress worth
 set expandtab "You never want to see a \t again in your file, rather tabs keypresses will be expanded into spaces
-"shows trailling whitespaces
-set list listchars=trail:·,tab:\ \ 
-imap <c-d> <del>
-imap <c-b> <left>
-set completeopt=menu,longest
 
-" key bindings
+"show trailling whitespaces
+set list listchars=trail:·,tab:\ \ 
+inoremap <c-d> <del>
+inoremap <c-b> <left>
+inoremap <c-f> <right>
+inoremap <c-x>l <c-x><c-l>
+inoremap <c-x>o <c-x><c-o>
+inoremap <c-x>n <c-x><c-n>
+inoremap <c-x>p <c-x><c-p>
+inoremap <c-x>f <c-x><c-f>
+set completeopt=menuone,noinsert
+
+" key binding
 
     "vim
 map <space><space> :
 map <space>w :w<cr>
-map <space>t :tabnew<cr>
+map <space>t :tab split<cr>
 map <space>T gT:tabnew<cr>
 map <space>o :tabonly<cr>
 map <space>x :te<cr>i
@@ -73,17 +78,22 @@ map <space>> 9<c-w>>
 map <space>< 9<c-w><
 map <space>q <c-w><c-w><c-w>q
 map <space>g :tab G 
+" map <space>gca :G fetch<cr>:tab G commit -a<cr>
 map <space>j :cn<cr>zz
 map <space>k :cN<cr>zz
-map <space>h :ln<cr>
+" map <space>h :ln<cr>
 map <c-w>1 :tabmove 1<cr>
 map <c-w>2 :tabmove 2<cr>
 map <c-w>0 :tabmove 0<cr>
 map <c-w><space> <c-w>L12<c-w><
 map <c-.> <c-w>>
 map <c-,> <c-w><
-map <c-k> :Man<cr>
-map gD :tabnew<cr><c-o><c-]>
+map <c-k> :tab Man<cr>
+map gD :tab split<cr><c-]>
+map <left> gT
+map <right> gt
+map <M-h> gT
+map <M-l> gt
 " map gr gR<cr><space>q
 tmap <c-\> <c-\><c-n>
 map _ "_
@@ -110,7 +120,7 @@ endif
 map <space>f :Files!<cr>
 map <space>F :GitFiles!<cr>
 map \g :GitFiles!?<cr>
-map \d :G diff HEAD~
+map <space>d :tab G diff HEAD
 map \c :BCommits<cr>
 map \C :Commits<cr>
 map <space>b :Buffers!<cr>
@@ -124,6 +134,7 @@ map \h: :History:<cr>
 map \H :Hel!<cr>
 map \m :Marks<cr>
 map \: :Commands<cr>
+map \b :hi gitcommitBlank ctermbg=none<cr>
 let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-\']
 
 map \n :NERDTreeToggle<cr>
@@ -166,19 +177,15 @@ ino {<s-cr> <c-g>u{<cr>}<esc>O
 nno zj <c-e>j
 nno zk <c-y>k
 
+setglobal commentstring=//\ %s
 " comments
-aug slashes
+aug comments
     au!
-    au BufEnter *.{cpp,c,cs,rs,s} map <space>/ ^i// <esc>
-    au BufEnter *.{cpp,c,cs,rs,s} map <space>? ^xxx
-    au FileType cs setlocal commentstring=//%s
-    au FileType al setlocal commentstring=//%s
-    au FileType cpp setlocal commentstring=//%s
-    au FileType asm setlocal commentstring=//%s
-aug end
-aug sharp_slashes
-    au!
-    au BufEnter *.{sh,bashrc} map <space>/ ^i# <esc>
-    au BufEnter *.{sh,bashrc} map <space>? ^xx
+    au BufEnter * map <space>/ gcc
+    au BufEnter * map <space>? gcc
+
+    au FileType vim setlocal commentstring=\"\ %s
+    au FileType lua setlocal commentstring=--\ %s
+    au FileType sh setlocal commentstring=#\ %s
 aug end
 

@@ -154,4 +154,5 @@ complete -f -F _dotnet_bash_complete dotnet
 # platform secific localbashrc
 . ~/.git-completion.bash
 export FrameworkPathOverride=/opt/homebrew/lib/mono/4.7.2-api
+export MONO_GAC_PREFIX="/opt/homebrew"
 

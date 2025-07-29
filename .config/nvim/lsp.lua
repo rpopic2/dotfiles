@@ -1,11 +1,27 @@
 local api = vim.api
 
 -- csharp
-local util = require'lspconfig'.util
-require'lspconfig'.csharp_ls.setup {
+-- local util = require'lspconfig'.util
+-- require'lspconfig'.csharp_ls.setup {
+    -- cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
+    -- root_dir = vim.fs.dirname(vim.fs.find({ "*.csproj", ".git" }, { upward = true })[1])
+-- }
+
+
+-- local aug_csharp_lsp = api.nvim_create_augroup("aug_csharp_lsp", { clear = true })
+-- api.nvim_create_autocmd("BufEnter", {
+    -- group = aug_csharp_lsp,
+    -- pattern = { "*.cs" },
+    -- callback = function()
+    -- end,
+-- })
+
+vim.lsp.config.csharp_ls = {
     cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
-    root_dir = vim.fs.dirname(vim.fs.find({ "*.csproj" }, { upward = true })[1])
+    root_markers = { '*.csproj', '.git' },
+    filetypes = { 'cs' },
 }
+vim.lsp.enable({'csharp_ls'})
 
 -- cpp
 local aug_cpp_lsp = api.nvim_create_augroup("aug_cpp_lsp", { clear = true })
@@ -49,6 +65,16 @@ api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+local function keymap(lhs, rhs, opts, mode)
+    opts = type(opts) == 'string' and { desc = opts }
+        or vim.tbl_extend('error', opts --[[@as table]], { buffer = bufnr })
+    mode = mode or 'n'
+    vim.keymap.set(mode, lhs, rhs, opts)
+end
+local function pumvisible()
+    return tonumber(vim.fn.pumvisible()) ~= 0
+end
+
 -- aug lsp
 local aug_lsp = api.nvim_create_augroup("aug_lsp", { clear = true })
 
@@ -69,8 +95,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '(', vim.diagnostic.goto_prev)
         vim.keymap.set('n', ')', vim.diagnostic.goto_next)
         vim.keymap.set('n', '<space>l', vim.diagnostic.setloclist)
-        vim.keymap.set('n', '<space>d', vim.diagnostic.setqflist)
+        vim.keymap.set('n', '\\d', vim.diagnostic.setqflist)
         client.server_capabilities.semanticTokensProvider = nil
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+            keymap('<cr>', function()
+                return pumvisible() and '<C-y>' or '<cr>'
+            end, { expr = true }, 'i')
+        end
     end,
 })
 
