@@ -125,6 +125,7 @@ export PATH="/Users/rpopic2/go/bin:$PATH"
 export PATH=/opt/homebrew/opt/curl/bin:$PATH:~/.local/bin:~/scripts
 export PATH="/Users/rpopic2/.gem/ruby/3.3.0/bin:$PATH"
 export PATH="/Users/rpopic2/.gem/ruby/2.6.0/bin:$PATH"
+export PATH="/Users/rpopic2/.dotnet/tools:$PATH"
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
@@ -132,8 +133,8 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PS1="${debian_chroot:+($debian_chroot)}\h\w "
 export LESS='--mouse --wheel-lines=2'
 export BAT_THEME="base16"
-export VISUAL=nvim
-export EDITOR=nvim
+export VISUAL=hx
+export EDITOR=hx
 export ROGUEOPTS="fruit=cherry"
 
 # bash parameter completion for the dotnet CLI

@@ -11,27 +11,34 @@ call plug#end()
 " source ~/.config/nvim/plugins/treesitter.lua
 source ~/.config/nvim/lsp.lua
 
-
+" color
 set notermguicolors
-colorscheme gh-light
-set colorcolumn=81
-aug his
-    au!
-    au BufEnter *.al set filetype=al
-    au ColorScheme hi gitcommitBlank ctermbg=None hi ColorColumn ctermfg=White ctermbg=none
-    hi @lsp.type.struct.cs ctermfg=Blue
-    hi diffRemoved ctermfg=Grey ctermbg=lightred
-    hi diffAdded ctermbg=LightGreen
-    hi diffFile ctermfg=Cyan
-    hi csPreProcPragma ctermfg=Grey
-aug end
+hi Statement ctermfg=red
+hi Type cterm=bold
+hi cErrInBracket ctermfg=None ctermbg=None cterm=italic
 
-hi Search ctermbg=LightYellow
+" colorscheme gh-light
+" set colorcolumn=81
+" aug his
+"     au!
+"     au BufEnter *.al set filetype=al
+"     au ColorScheme hi gitcommitBlank ctermbg=None hi ColorColumn ctermfg=White ctermbg=none
+"     hi ColorColumn cterm=None ctermbg=LightGrey
+"     hi @lsp.type.struct.cs ctermfg=Blue
+"     hi diffRemoved ctermfg=Grey ctermbg=lightred
+"     hi diffAdded ctermbg=LightGreen
+"     hi diffFile ctermfg=Cyan
+"     hi csPreProcPragma ctermfg=Grey
+    " hi Search ctermbg=LightYellow
+" aug end
+
 
 set updatetime=300
 set signcolumn=yes
 set encoding=utf-8
 set winborder=single
+set smartcase
+set ignorecase
 
 " status line
 set statusline=%w%h%r%q%t%m
@@ -109,12 +116,12 @@ aug fzf_files
     au BufEnter *.* let pred = "-name \'*." . expand('%:e') . "\'"
 aug end
 
-map <space>c :call fzf#run({'source': 'find . ' . pred, 'sink': 'tabedit'})<cr>
+map <space>c :call fzf#run({'source': 'find . ' . pred, 'sink': 'e'})<cr>
 map <space>e :call fzf#run({'source': 'find .', 'sink': 'e'})<cr>
 
 call system("test -d Assets")
 if v:shell_error == 0
-    map <space>c :call fzf#run({'source': 'find Assets -name *.cs', 'sink': 'tabedit'})<cr>
+    map <space>c :call fzf#run({'source': 'find Assets -name *.cs', 'sink': 'e'})<cr>
 endif
 
 map <space>f :Files!<cr>
@@ -139,6 +146,8 @@ let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-\']
 
 map \n :NERDTreeToggle<cr>
 map \t :TagbarToggle<cr>
+map \w :TagbarCurrentTag<cr>
+map \v /\%V
 
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>

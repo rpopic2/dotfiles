@@ -16,12 +16,27 @@ local api = vim.api
     -- end,
 -- })
 
-vim.lsp.config.csharp_ls = {
-    cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
-    root_markers = { '*.csproj', '.git' },
-    filetypes = { 'cs' },
-}
-vim.lsp.enable({'csharp_ls'})
+-- vim.lsp.config.csharp_ls = {
+    -- cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
+    -- root_markers = { '*.csproj', '.git' },
+    -- filetypes = { '*.cs' },
+-- }
+-- vim.lsp.enable({'csharp_ls'})
+
+-- cpp
+local aug_csharp_lsp = api.nvim_create_augroup("aug_csharp_lsp", { clear = true })
+api.nvim_create_autocmd("BufEnter", {
+    group = aug_csharp_lsp,
+    pattern = { "*.cs" },
+    callback = function()
+        vim.lsp.start({
+            name = 'csharp_ls',
+            cmd = { '/Users/rpopic2/.dotnet/tools/csharp-ls' },
+            root_dir = vim.fs.dirname(vim.fs.find({".git" }, { upward = true })[1])
+        })
+    end,
+})
+
 
 -- cpp
 local aug_cpp_lsp = api.nvim_create_augroup("aug_cpp_lsp", { clear = true })

@@ -1,0 +1,15 @@
+# theme = "base16_default_light"
+theme = "solarized_dark"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal]
+A-l = "@<C-w>l"
+A-h = "@<C-w>h"
+
+[keys.normal."space"]
+w = ":w"
